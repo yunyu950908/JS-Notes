@@ -8,7 +8,19 @@
 
 </body>
 <script type="text/javascript">
-    var str = "hello\\\\饥人谷"//补全代码
-        console.log(str)
+    //回文判断
+    function definite(str) {
+        if (typeof str !== "string") {
+            console.log("请输入字符串")
+            return
+        } else {
+            var str2 = str.split("").reverse().join("")
+            if (str2 === str) {
+                console.log("TRUE")
+            } else {
+                console.log("FALSE")
+            }
+        }
+    }
 </script>
 </html>
