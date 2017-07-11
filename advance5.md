@@ -22,23 +22,23 @@ application/atom+xml
 ## 1、使用数组拼接出如下字符串 ，其中styles数组里的个数不定
 
 ```
-    var prod = {
-        name: '女装',
-        styles: ['短款', '冬季', '春装']
-    };
-    function getTpl(data) {
-        var arr1 = data.styles, arr2 = [];
-        var str1 = '<dl class="product">', str2 = "</dl>";
-        for (var i = 0; i < arr1.length; i++) {
-            arr2[i] = "<dd>" + arr1[i] + "</dd>";
-        }
-        arr2 = arr2.join("");//数组按空字符串拼接成字符串
-        return str1 + arr2 + str2;
+var prod = {
+    name: '女装',
+    styles: ['短款', '冬季', '春装']
+};
+function getTpl(data) {
+    var arr1 = data.styles, arr2 = [];
+    var str1 = '<dl class="product">', str2 = "</dl>";
+    for (var i = 0; i < arr1.length; i++) {
+        arr2[i] = "<dd>" + arr1[i] + "</dd>";
     }
-    getTpl(prod);
-    var result = getTpl(prod);  //result为下面的字符串
-    //<dl class="product"><dt>女装</dt><dd>短款</dd<dd>冬季</dd><dd>春装</dd></dl>
-    console.log(result);
+    arr2 = arr2.join("");//数组按空字符串拼接成字符串
+    return str1 + arr2 + str2;
+}
+getTpl(prod);
+var result = getTpl(prod);  //result为下面的字符串
+//<dl class="product"><dt>女装</dt><dd>短款</dd<dd>冬季</dd><dd>春装</dd></dl>
+console.log(result);
 ```
 
 ## 2、写出两种以上声明多行字符串的方法
@@ -94,56 +94,56 @@ console.log(str)
 ## 4、以下代码输出什么?为什么
 
 ```
-   var str = 'jirengu\nruoyu'
-   console.log(str.length) //=>13=>"\n"表示一个换行符
+var str = 'jirengu\nruoyu'
+console.log(str.length) //=>13=>"\n"表示一个换行符
 ```
 
 ## 5、写一个函数，判断一个字符串是回文字符串，如 abcdcba是回文字符串, abcdcbb不是
 
 ```
-    //回文判断
-    function definite(str) {
-        if (typeof str !== "string") {
-            console.log("请输入字符串")
-            return
+//回文判断
+function definite(str) {
+    if (typeof str !== "string") {
+        console.log("请输入字符串")
+        return
+    } else {
+        var str2 = str.split("").reverse().join("")
+        if (str2 === str) {
+            console.log("TRUE")
         } else {
-            var str2 = str.split("").reverse().join("")
-            if (str2 === str) {
-                console.log("TRUE")
-            } else {
-                console.log("FALSE")
-            }
+            console.log("FALSE")
         }
     }
+}
 ```
 
 ## 6、写一个函数，统计字符串里出现出现频率最多的字符
 
 ```
-    //获取出现频率最高的字符
-    function maxStr(str) {
-        if (typeof str !== "string") {
-            console.log("请输入字符串")
-            return
-        } else {
-            var str2 = {} //保存出现次数的键值对
-            for (var i = 0; i < str.length; i++) {
-                if (str2[str[i]]) {
-                    str2[str[i]]++
-                } else {
-                    str2[str[i]] = 1
-                }
+//获取出现频率最高的字符
+function maxStr(str) {
+    if (typeof str !== "string") {
+        console.log("请输入字符串")
+        return
+    } else {
+        var str2 = {} //保存出现次数的键值对
+        for (var i = 0; i < str.length; i++) {
+            if (str2[str[i]]) {
+                str2[str[i]]++
+            } else {
+                str2[str[i]] = 1
             }
-            var maxCount = 0, maxKey //最大频率的键值对
-            for (var key in str2) {
-                if (str2[key] > maxCount) {
-                    maxCount = str2[key]
-                    maxKey = key
-                }
-            }
-            console.log(maxKey, maxCount)
         }
+        var maxCount = 0, maxKey //最大频率的键值对
+        for (var key in str2) {
+            if (str2[key] > maxCount) {
+                maxCount = str2[key]
+                maxKey = key
+            }
+        }
+        console.log(maxKey, maxCount)
     }
+}
 ```
 
 ## 7、写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如
@@ -154,15 +154,15 @@ camelize("list-style-image") == 'listStyleImage'
 ```
 
 ```
-    function camelize(str) {
-        var arr = str.split("-")
-        for (var i = 0; i < arr.length; i++) {
-            arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1)
-        }
-        var str2 = arr.join("")
-        str2 = str2[0].toLowerCase() + str2.slice(1)
-        return str2
+function camelize(str) {
+    var arr = str.split("-")
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1)
     }
+    var str2 = arr.join("")
+    str2 = str2[0].toLowerCase() + str2.slice(1)
+    return str2
+}
 ```
 
 ## 8、写一个 ucFirst函数，返回第一个字母为大写的字符 （***）
@@ -172,12 +172,12 @@ ucFirst("hunger") == "Hunger"
 ```
 
 ```
-    function ucFirst(str) {
-        for (var i = 0; i < str.length; i++) {
-            var str2 = str[0].toUpperCase() + str.slice(1)
-        }
-        return str2
+function ucFirst(str) {
+    for (var i = 0; i < str.length; i++) {
+        var str2 = str[0].toUpperCase() + str.slice(1)
     }
+    return str2
+}
 ```
 
 ## 9、写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上...，如
@@ -188,16 +188,16 @@ truncate("hello world", 20) == "hello world"
 ```
 
 ```
-    function truncate(str, maxlength) {
-        var arr = str.split("")
-        var arr2 = arr.splice(0, maxlength + 1)
-        var str2 = arr2.join("")
-        if (arr.length > maxlength) {
-            return str2 + "..."
-        } else {
-            return str2
-        }
+function truncate(str, maxlength) {
+    var arr = str.split("")
+    var arr2 = arr.splice(0, maxlength + 1)
+    var str2 = arr2.join("")
+    if (arr.length > maxlength) {
+        return str2 + "..."
+    } else {
+        return str2
     }
+}
 ```
 
 ## 10、什么是 JSON格式数据？JSON格式数据如何表示对象？window.JSON 是什么？
@@ -232,26 +232,26 @@ truncate("hello world", 20) == "hello world"
 - JSON.parse()
 
 ```
-	var str='{ "port_password":{ "8989":"password0", "9001":"password1", "9002":"password2", "9003":"password3", "9004":"password4" }, "method":"aes-256-cfb", "timeout":600, "other":["TCP","UDP","MTU"] }'
-	JSON.parse(str)
+var str='{ "port_password":{ "8989":"password0", "9001":"password1", "9002":"password2", "9003":"password3", "9004":"password4" }, "method":"aes-256-cfb", "timeout":600, "other":["TCP","UDP","MTU"] }'
+               JSON.parse(str)
 ```
 
 - JSON.stringify()
 
 ```
-    var obj = {
-        "port_password":{
-             "8989":"password0",
-             "9001":"password1",
-             "9002":"password2",
-             "9003":"password3",
-             "9004":"password4"
-        },
-        "method":"aes-256-cfb",
-        "timeout":600,
-        "other":["TCP","UDP","MTU"]
-    }
-    JSON.stringify(obj)
+var obj = {
+    "port_password":{
+         "8989":"password0",
+         "9001":"password1",
+         "9002":"password2",
+         "9003":"password3",
+         "9004":"password4"
+    },
+    "method":"aes-256-cfb",
+    "timeout":600,
+    "other":["TCP","UDP","MTU"]
+}
+JSON.stringify(obj)
 ```
 
 
