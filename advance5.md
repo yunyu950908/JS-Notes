@@ -22,18 +22,23 @@ application/atom+xml
 ## 1、使用数组拼接出如下字符串 ，其中styles数组里的个数不定
 
 ```
-var prod = {
-    name: '女装',
-    styles: ['短款', '冬季', '春装']
-};
-function getTpl(data){
-//todo...
-};
-var result = getTplStr(prod);  //result为下面的字符串
-```
-
-```
-<dl class="product"><dt>女装</dt><dd>短款</dd<dd>冬季</dd><dd>春装</dd></dl>
+    var prod = {
+        name: '女装',
+        styles: ['短款', '冬季', '春装']
+    };
+    function getTpl(data) {
+        var arr1 = data.styles, arr2 = [];
+        var str1 = '<dl class="product">', str2 = "</dl>";
+        for (var i = 0; i < arr1.length; i++) {
+            arr2[i] = "<dd>" + arr1[i] + "</dd>";
+        }
+        arr2 = arr2.join("");//数组按空字符串拼接成字符串
+        return str1 + arr2 + str2;
+    }
+    getTpl(prod);
+    var result = getTpl(prod);  //result为下面的字符串
+    //<dl class="product"><dt>女装</dt><dd>短款</dd<dd>冬季</dd><dd>春装</dd></dl>
+    console.log(result);
 ```
 
 ## 2、写出两种以上声明多行字符串的方法
