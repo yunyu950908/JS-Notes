@@ -8,28 +8,19 @@
 
 </body>
 <script type="text/javascript">
-    //获取出现频率最高的字符
-    function maxStr(str) {
-        if (typeof str !== "string") {
-            console.log("请输入字符串")
-            return
+    //    9、写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上...，如
+    //
+    //    truncate("hello, this is hunger valley,", 10) == "hello, thi...";
+    //    truncate("hello world", 20) == "hello world"
+
+    function truncate(str, maxlength) {
+        var arr = str.split("")
+        var arr2 = arr.splice(0, maxlength + 1)
+        var str2 = arr2.join("")
+        if (arr.length > maxlength) {
+            return str2 + "..."
         } else {
-            var str2 = {} //保存出现次数的键值对
-            for (var i = 0; i < str.length; i++) {
-                if (str2[str[i]]) {
-                    str2[str[i]]++
-                } else {
-                    str2[str[i]] = 1
-                }
-            }
-            var maxCount = 0, maxKey //最大频率的键值对
-            for (var key in str2) {
-                if (str2[key] > maxCount) {
-                    maxCount = str2[key]
-                    maxKey = key
-                }
-            }
-            console.log(maxKey, maxCount)
+            return str2
         }
     }
 </script>
