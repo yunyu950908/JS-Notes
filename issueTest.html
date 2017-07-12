@@ -8,20 +8,32 @@
 
 </body>
 <script type="text/javascript">
-    //    9、写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上...，如
-    //
-    //    truncate("hello, this is hunger valley,", 10) == "hello, thi...";
-    //    truncate("hello world", 20) == "hello world"
+    //    1.
+    //    function random1(min, max) {
+    //        return min + Math.floor(Math.random() * (max - min))
+    //    }
 
-    function truncate(str, maxlength) {
-        var arr = str.split("")
-        var arr2 = arr.splice(0, maxlength + 1)
-        var str2 = arr2.join("")
-        if (arr.length > maxlength) {
-            return str2 + "..."
-        } else {
-            return str2
-        }
-    }
+    //2.
+    //    function random2(min, max) {
+    //        return min + Math.round(Math.random() * (max - min))
+    //    }
+
+    //3.
+    //    function getRandStr(len) {
+    //        //补全函数
+    //        var str1 = "0123456789" +
+    //            "abcdefghijklmnopqrstuvwxyz" +
+    //            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    //        var str2 = ""
+    //        for (var i = 0; i < len; i++) {
+    //            str2 += str1[Math.round(Math.random() * str1.length)]
+    //        }
+    //        return str2
+    //    }
+    //    var str = getRandStr(10);
+
+    //4.
+
+
 </script>
 </html>
