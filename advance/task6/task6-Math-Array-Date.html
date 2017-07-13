@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //    Math
+
+    //    1.
+    //    function random1(min, max) {
+    //        return min + Math.floor(Math.random() * (max - min))
+    //    }
+
+    //2.
+    //    function random2(min, max) {
+    //        return min + Math.round(Math.random() * (max - min))
+    //    }
+
+    //3.
+    //    function getRandStr(len) {
+    //        //补全函数
+    //        var str1 = "0123456789" +
+    //            "abcdefghijklmnopqrstuvwxyz" +
+    //            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    //        var str2 = ""
+    //        for (var i = 0; i < len; i++) {
+    //            str2 += str1[Math.round(Math.random() * str1.length)]
+    //        }
+    //        return str2
+    //    }
+    //    var str = getRandStr(10);
+
+    //4.
+    //    function getRandIP() {
+    //        //补全
+    //        var arr = []
+    //        for (var i = 0; i < 4; i++) {
+    //            arr.push(Math.round(Math.random() * 255))
+    //        }
+    //        var str = arr.join(",")
+    //        return str
+    //    }
+    //    var ip = getRandIP()
+    //    console.log(ip) // 10.234.121.45
+
+    //5.
+    //    function getRandColor() {
+    //        var str1 = "0123456789" +
+    //                "abcdef",
+    //            str2 = ""
+    //        for (var i = 0; i < 6; i++) {
+    //            str2 += str1[Math.round(Math.random() * 12)]
+    //        }
+    //        return str2
+    //    }
+    //    var color = getRandColor()
+    //    console.log(color)   // #3e2f1b
+
+
+    //    Array
+
+    //    1.
+
+    //    2.
+
+    //    function squareArr(arr) {
+    //        return arr.forEach(function (e, i, array) {
+    //            array[i] = e * e
+    //        })
+    //
+    //    }
+    //    var arr = [2, 4, 6]
+    //    squareArr(arr)
+    //    console.log(arr) // [4, 16, 36]
+
+    //3.
+
+    //    function filterPositive(arr) {
+    //        var newArr = arr.filter(function (e) {
+    //            if (typeof e == "number" && e > 0)return e
+    //        })
+    //        return newArr
+    //    }
+    //    var arr = [3, -1, 2, '饥人谷', true]
+    //    var newArr = filterPositive(arr)
+    //    console.log(newArr) //[3, 2]
+    //    console.log(arr) //[3, -1,  2,  '饥人谷', true]
+
+    //    Date
+
+    //1.
+
+    //    function getChIntv(str) {
+    //        var num1 = Date.now(),
+    //            num2 = Date.parse(str),
+    //            num3 = Math.abs(num2 - num1)
+    //        var sec = Math.round((num3 / 1000) % 60),
+    //            min = Math.round((num3 / 1000 / 60) % 60),
+    //            h = Math.round((num3 / 1000 / 60 / 60) % 24),
+    //            d = Math.round((num3 / 1000 / 60 / 60 / 24))
+    //        var outStr = "距离目标时间" + d + "天" + h + "小时" + min + "分" + sec + "秒"
+    //        return outStr
+    //    }
+    //    var str = getChIntv("2017-07-08");
+    //    console.log(str);  // 距除夕还有 20 天 15 小时 20 分 10 秒
+
+    //2.
+
+    //    function getChsDate(str) {
+    //        var arr = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十", "二十一", "二十二", "二十三", "二十四", "二十五", "二十六", "二十七", "二十八", "二十九", "三十", "三十一"],
+    //            targetDate = new Date(str),
+    //            getYear = targetDate.getFullYear().toString().split(""),
+    //            getMonth = targetDate.getMonth() + 1,
+    //            getDate = targetDate.getDate(),
+    //            year = "",
+    //            month = "",
+    //            date = ""
+    //        //year
+    //        for (var i = 0; i < getYear.length; i++) {
+    //            year += arr[getYear[i]]
+    //        }
+    //        //month
+    //        month = arr[getMonth]
+    //        //date
+    //        date = arr[getDate]
+    //        //output
+    //        return year + "年" + month + "月" + date + "日"
+    //    }
+    //    var str = getChsDate('2015-01-08');
+    //    console.log(str);  // 二零一五年一月八日
+
+
+    //    3.
+    //
+    //    function friendlyDate(time) {
+    //        //获取当前时间戳，计算差值
+    //        var time1 = Date.now(),
+    //            offset = time1 - Number(time)
+    //        //定义秒分时天月年
+    //        var sec = offset / 1000,
+    //            min = Math.round(offset / 1000 / 60),
+    //            h = Math.round(offset / 1000 / 60 / 60),
+    //            d = Math.round(offset / 1000 / 60 / 60 / 24),
+    //            m = Math.round(offset / 1000 / 60 / 60 / 24 / 30),
+    //            y = Math.round(offset / 1000 / 60 / 60 / 24 / 30 / 12)
+    //        //计算判断输出
+    //        if (sec < 60)return "刚刚"
+    //        if (min > 0 && min < 60)return min + "分钟前"
+    //        if (h > 0 && h < 24)return h + "小时前"
+    //        if (d > 0 && h < 30)return d + "天前"
+    //        if (m > 0 && m < 12)return m + "个月前"
+    //        if (y > 0)return y + "年前"
+    //    }
+    //    var str = friendlyDate('1484286699422') //6个月前
+    //    var str2 = friendlyDate('1383941245793') //4年前
+
+</script>
+</html>
