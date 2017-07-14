@@ -5,12 +5,25 @@
     <title>jsTest</title>
 </head>
 <body>
-<div id="parentElement">
-    <span id="childElement">foo bar</span>
+<div class="mod-tabs">
+    <ul>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+    </ul>
+    <button class="btn">点我</button>
 </div>
 </body>
 <script type="text/javascript">
+    var oLis = document.getElementsByTagName("li"),
+        oBtn = document.getElementsByClassName("btn")
+    console.log(oLis)
+    console.log(oBtn)
 
+    var qLis = document.querySelectorAll("li")
+    var qBtn = document.querySelector(".btn")
+    console.log(qLis)
+    console.log(qBtn)
 
 </script>
 </html>
