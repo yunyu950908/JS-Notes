@@ -37,17 +37,26 @@
     //头部添加
 
     btnAddStart.addEventListener("click", function () {
-        var oLi = document.createElement("li")
-        oLi.innerText = iptAddContent.value
-        oUl.insertBefore(oLi, oUl.firstChild)
+        if (iptAddContent.value.length !== 0 && typeof iptAddContent.value == "string") {
+            var oLi = document.createElement("li")
+            oLi.innerText = iptAddContent.value
+            oUl.insertBefore(oLi, oUl.firstChild)
+        } else {
+            alert("不允许输入空字符串")
+        }
+        //console.log(iptAddContent.value, typeof iptAddContent.value, iptAddContent.value.length)
     })
 
     //尾部添加
 
     btnAddEnd.addEventListener("click", function () {
-        var oLi = document.createElement("li")
-        oLi.innerText = iptAddContent.value
-        oUl.appendChild(oLi)
+        if (iptAddContent.value.length !== 0 && typeof iptAddContent.value == "string") {
+            var oLi = document.createElement("li")
+            oLi.innerText = iptAddContent.value
+            oUl.appendChild(oLi)
+        } else {
+            alert("不允许输入空字符串")
+        }
     })
 
 
