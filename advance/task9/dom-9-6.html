@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>任务班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+</body>
+<script type="text/javascript">
+    //题目6： 补全代码，要求：
+    //
+    //当点击按钮开头添加时在<li>这里是</li>元素前添加一个新元素，内容为用户输入的非空字符串；当点击结尾添加时在最后一个 li 元素后添加用户输入的非空字符串.
+    //当点击每一个元素li时控制台展示该元素的文本内容。
+    //你的代码
+
+    var oUl = document.querySelector(".ct"),
+        iptAddContent = document.querySelector(".ipt-add-content"),
+        btnAddStart = document.querySelector("#btn-add-start"),
+        btnAddEnd = document.querySelector("#btn-add-end")
+
+    //点击输出
+
+    oUl.addEventListener("click", function (e) {
+        if (e.target.tagName.toLowerCase() === "li") {
+            console.log(e.target.innerText)
+        }
+    })
+
+    //头部添加
+
+    btnAddStart.addEventListener("click", function () {
+        var oLi = document.createElement("li")
+        oLi.innerText = iptAddContent.value
+        oUl.insertBefore(oLi, oUl.firstChild)
+    })
+
+    //尾部添加
+
+    btnAddEnd.addEventListener("click", function () {
+        var oLi = document.createElement("li")
+        oLi.innerText = iptAddContent.value
+        oUl.appendChild(oLi)
+    })
+
+
+</script>
+</html>
