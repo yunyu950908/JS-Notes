@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://files.15w.com/image/2016/0505/14624277664236.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://joymepic.joyme.com/article/uploads/20172/211490079467171372.jpeg">鼠标放置查看图片2</li>
+    <li data-img="http://files.15w.com/image/2016/0505/14624277152352.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+</body>
+<script type="text/javascript">
+    //题目7： 补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。
+
+    //    var ct = document.querySelector(".ct"),
+    //        oLis = ct.querySelectorAll("li"),
+    //        imgPreview = document.querySelector(".img-preview")
+    //
+    //    for (var i = 0; i < oLis.length; i++) {
+    //        oLis[i].addEventListener("mouseover", function () {
+    //            var dataImg = this.getAttribute("data-img")
+    //            imgPreview.innerHTML = "<img src='" + dataImg + "'>"
+    //            var oImg = imgPreview.querySelector("img")
+    //            oImg.style.width = "600px"
+    //        })
+
+
+    //事件代理
+
+    var ct = document.querySelector(".ct"),
+        oLis = ct.querySelectorAll("li"),
+        imgPreview = document.querySelector(".img-preview")
+
+    var oImg = document.createElement("img")
+    imgPreview.appendChild(oImg)
+    oImg.style.display = "none"
+    oImg.style.width = "600px"
+
+    ct.addEventListener("mouseover", function (e) {
+        if (e.target.tagName.toLowerCase() === "li") {
+            var dataImg = e.target.getAttribute("data-img")
+            oImg.setAttribute("src", dataImg)
+            oImg.style.display = "block"
+        }
+    })
+
+</script>
+</html>
