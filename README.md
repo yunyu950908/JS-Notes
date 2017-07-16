@@ -40,6 +40,6 @@ jrg-task
 
 ## 进阶10
 
-[Tab 切换](http://http://advance.liyu0906.cn/advance/task10/code10-1-tabBox.html)
+[Tab 切换](http://advance.liyu0906.cn/advance/task10/code10-1-tabBox.html)
 
-[模态框](http://http://advance.liyu0906.cn/advance/task10/code10-2-modalBox.html)
+[模态框](http://advance.liyu0906.cn/advance/task10/code10-2-modalBox.html)
