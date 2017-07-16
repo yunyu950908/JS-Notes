@@ -42,4 +42,4 @@ jrg-task
 
 [Tab 切换](https://github.com/yunyu950908/jrg-task/task10/code10-1-tabBox.html)
 
-[模态框](https://github.com/yunyu950908/jrg-task/task10/code10-2-modalBox.html)
+[模态框](https://github.com/yunyu950908/jrg-task/advance/task10/code10-2-modalBox.html)
