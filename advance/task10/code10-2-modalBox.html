@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+    <style type=text/css>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            user-select: none;
+        }
+
+        /*公共样式*/
+
+        .pd {
+            padding: 6px 12px;
+        }
+
+        .bbt {
+            border-bottom: 2px solid #c2c2c2;
+        }
+
+        /*样式开始*/
+
+        .btn {
+            display: block;
+            margin: 60px auto;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #576d74;
+            color: #abc2c2;
+            user-select: none;
+        }
+
+        .btn:hover {
+            background: #94b4e6;
+            color: #c4dfff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3), 0 6px 6px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .cover {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .container {
+            width: 500px;
+            border-radius: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+        }
+
+        .container header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container main p {
+            margin: 18px;
+        }
+
+        .container footer {
+            padding: 12px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .container footer a {
+            display: inline-block;
+            margin: 0 12px;
+        }
+    </style>
+</head>
+<body>
+<button class="btn">click me</button>
+<div class="cover">
+    <div class="container">
+        <header class="pd bbt">
+            <h1>title</h1>
+            <a class="close" href="javascript:;">×</a>
+        </header>
+        <main class="pd bbt">
+            <p>paragraph111111</p>
+            <p>paragraph222222</p>
+        </main>
+        <footer class="pd">
+            <a class="close" href="javascript:;">cancel</a>
+            <a href="javascript:;">ok</a>
+        </footer>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var btn = document.querySelector(".btn"),
+        cover = document.querySelector(".cover"),
+        container = document.querySelector(".container"),
+        close = document.querySelectorAll(".close")
+
+    btn.addEventListener("click", function () {
+        cover.style.display = "block"
+    })
+
+    close.forEach(function (e) {
+        e.addEventListener("click", function () {
+            cover.style.display = "none"
+        })
+    })
+
+    cover.addEventListener("click", function () {
+        cover.style.display = "none"
+    })
+
+    container.addEventListener("click", function (e) {
+        e.stopPropagation()
+    })
+
+</script>
+</html>
