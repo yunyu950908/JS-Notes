@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+    <style type=text/css>
+
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态
+    var Car = (function () {
+        var speed = 0;
+
+        function setSpeed(s) {
+            return speed = s
+        }
+
+        function getSpeed() {
+            return console.log(speed)
+        }
+
+        function accelerate() {
+            return speed += 10
+        }
+
+        function decelerate() {
+            return speed >= 0 ? speed -= 10 : speed
+        }
+
+        function getStatus() {
+            return console.log(speed > 0 ? "running" : "stop")
+        }
+
+        return {
+            setSpeed: setSpeed,
+            getSpeed: getSpeed,
+            accelerate: accelerate,
+            decelerate: decelerate,
+            getStatus: getStatus,
+            speed: "error"
+        }
+    })()
+    Car.setSpeed(30);
+    Car.getSpeed(); //30
+    Car.accelerate();
+    Car.getSpeed(); //40;
+    Car.decelerate();
+    Car.decelerate();
+    Car.getSpeed(); //20
+    Car.getStatus(); // 'running';
+    Car.decelerate();
+    Car.decelerate();
+    Car.getStatus();  //'stop';
+    //Car.speed;  //error
+
+</script>
+</html>

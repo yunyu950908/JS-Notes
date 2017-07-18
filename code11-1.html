@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+    <style type=text/css>
+
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //    var fnArr = [];
+    //    for (var i = 0; i < 10; i++) {
+    //        fnArr[i] = function () {
+    //            return i;
+    //        };
+    //    }
+    //    console.log(fnArr[3]());  //10
+
+    //方法一：创建一个变量保存每次循环的i
+
+    //    var fnArr = [];
+    //    for (var i = 0; i < 10; i++) {
+    //        let temp = i ;
+    //        fnArr[i] = function () {
+    //            return temp;
+    //        };
+    //    }
+    //    console.log(fnArr[3]());  //3
+
+
+    //方法二：创建自执行函数，原理类似方法一
+
+    //    var fnArr = [];
+    //    for (var i = 0; i < 10; i++) {
+    //        !function (i) {
+    //            fnArr[i] = function () {
+    //                return i;
+    //            }
+    //        }(i)
+    //    }
+    //    console.log(fnArr[3]());  //3
+
+
+    //方法三：使用ES6 let创建作用域块，i只在本轮循环有效
+
+    //    var fnArr = [];
+    //    for (let i = 0; i < 10; i++) {
+    //        fnArr[i] = function () {
+    //            return i;
+    //        };
+    //    }
+    //    console.log(fnArr[3]());  //3
+
+
+</script>
+</html>
