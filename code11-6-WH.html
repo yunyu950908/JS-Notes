@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+    <style type=text/css>
+
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function getStyle(e) {
+        //IE不支持window.getComputedStyle()，支持element.currentStyle();
+        return e.getComputedStyle() ? window.getComputedStyle(e) : e.currentStyle
+    }
+    let trueWidth = getStyle(e).width;
+    let trueHeight = getStyle(e).height;
+</script>
+</html>
