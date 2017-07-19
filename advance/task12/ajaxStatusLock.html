@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsTest</title>
+    <style type=text/css>
+
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+    var lock = false //使用状态锁
+    btn.addEventListener("click", function () {
+        if (lock) return //如果状态锁为TRUE 直接退出
+        ajax(xxx, function () { //否则进入AJAX操作
+            //...
+            lock = true //数据来了之后解除状态锁
+            //...
+        })
+        lock = false //发送请求前更改状态锁，防止发送重复请求
+    })
+    function ajax() {
+
+    }
+</script>
+</html>
