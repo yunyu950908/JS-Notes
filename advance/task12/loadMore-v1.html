@@ -67,15 +67,12 @@
 <script type="text/javascript">
     var nextIndex = 3,
         newsList = document.querySelector(".newsList"),
-        loadMore = document.querySelector(".loadMore"),
-        statusLock = false
+        loadMore = document.querySelector(".loadMore")
     loadMore.addEventListener("click", function () {
-        if (statusLock)return
         var xhr = new XMLHttpRequest()
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200 || xhr.status === 304) {
-                    statusLock = false
                     var frag = document.createDocumentFragment()
                     for (var i = 0; i < JSON.parse(xhr.responseText).length; i++) {
                         //console.log(xhr.responseText)
@@ -90,8 +87,7 @@
                 }
             }
         }
-        statusLock = true
-        xhr.open("get", "/getInfo?index=" + nextIndex + "&length=6", true)
+        xhr.open("get", "/getInfoV1?index=" + nextIndex + "&length=6", true)
         xhr.send()
     })
 </script>
