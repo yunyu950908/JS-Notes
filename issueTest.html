@@ -14,7 +14,7 @@
             list-style: none;
         }
 
-        li, .btn {
+        li, .loadMore {
             cursor: pointer;
             border-radius: 5px;
             transition: .2s ease-in;
@@ -24,7 +24,7 @@
             background: lightseagreen;
         }
 
-        .btn:hover {
+        .loadMore:hover {
             background: rgba(236, 97, 73, .05);
         }
 
@@ -44,7 +44,7 @@
             border: 1px solid #ccc;
         }
 
-        .btn {
+        .loadMore {
             display: block;
             margin: 0 auto;
             padding: 10px 18px;
@@ -57,14 +57,39 @@
 </head>
 <body>
 <div class="container">
-    <ul class="list">
+    <ul class="newsList">
         <li>内容1</li>
         <li>内容2</li>
     </ul>
 </div>
-<button class="btn">加载更多</button>
+<button class="loadMore">加载更多</button>
 </body>
 <script type="text/javascript">
+    var index = 2,
+        len = 6,
+        newsList = document.querySelector(".newsList"),
+        loadMore = document.querySelector(".loadMore")
+
+    loadMore.addEventListener("click", function () {
+
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 || xhr.status === 304) {
+                    var frag = document.createDocumentFragment(),
+                        news = document.createElement("li")
+                    news.innerText = JSON.parse(xhr.responseText)
+                    frag.appendChild(news)
+                    newsList.appendChild(frag)
+                } else {
+                    console.log("ERROR: status code")
+                }
+            }
+        }
+        xhr.open("get", "/getInfo", true)
+        xhr.send()
+
+    })
 
 
 </script>
