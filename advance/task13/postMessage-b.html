@@ -20,10 +20,10 @@
 
 <script>
     document.querySelector('input').addEventListener('input', function () {
-        window.parent.postMessage(this.value, '*');
+        window.parent.postMessage(this.value, '*'); //=> 向使用这个iframe的父页面发送this.value,*匹配所有src
     });
     window.addEventListener('message', function (e) {
-        document.querySelector('input').value = e.data;
+        document.querySelector('input').value = e.data; //=> 监听从e收到的消息data,赋值给xxx
     })
 </script>
 </body>

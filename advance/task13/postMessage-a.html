@@ -41,13 +41,12 @@
 
     <iframe src="http://b.liyu0906.cn:8080/postMessage-b.html" frameborder="0"></iframe>
 </div>
-
 <script>
     document.querySelector('.main input').addEventListener('input', function () {
-        window.frames[0].postMessage(this.value, '*');
+        window.frames[0].postMessage(this.value, '*'); //=> 向iframe发送this.value,*匹配所有src
     });
     window.addEventListener('message', function (e) {
-        document.querySelector('.main input').value = e.data;
+        document.querySelector('.main input').value = e.data; //=> 监听从e收到的消息data,赋值给xxx
     })
 </script>
 </body>
