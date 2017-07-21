@@ -36,13 +36,14 @@
 
 
     //CORS
+    //服务器添加头 res.header("Access-Control-Allow-Origin", "*")
 
+    //AJAX
     change.addEventListener("click", function () {
         var xhr = new XMLHttpRequest()
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
                 appendHtml(JSON.parse(xhr.responseText))
-                console.log(xhr.responseText)
             }
         }
         xhr.open("get", "http://localhost:8080/getNews", true)
