@@ -25,6 +25,7 @@
     var change = $(".change"),
         oUl = $(".news")
 
+    //服务器返回一个执行函数
     function appendHtml(news) {
         var frag = ""
         for (var i = 0; i < news.length; i++) {
@@ -34,6 +35,7 @@
         oUl.innerHTML = frag
     }
 
+    //引用script
     change.addEventListener("click", function () {
         var script = document.createElement("script")
         script.src = "http://localhost:8080/getNews?callback=appendHtml"
