@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+        }
+
+        input {
+            margin: 20px;
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<input type="text" placeholder="http://b.liyu0906.cn:8080/JiangYu-b.html">
+
+<script>
+    document.querySelector('input').addEventListener('input', function () {
+        window.parent.document.querySelector('.main input').value = this.value;
+    });
+    document.domain = 'liyu0906.cn';
+</script>
+
+</body>
+</html>
