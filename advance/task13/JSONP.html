@@ -25,13 +25,6 @@
     var change = $(".change"),
         oUl = $(".news")
 
-    change.addEventListener("click", function () {
-        var script = document.createElement("script")
-        script.src = "http://localhost:8080/getNews?callback=appendHtml"
-        document.head.appendChild(script)
-        document.head.removeChild(script)
-    })
-
     function appendHtml(news) {
         var frag = ""
         for (var i = 0; i < news.length; i++) {
@@ -40,6 +33,14 @@
         console.log(frag)
         oUl.innerHTML = frag
     }
+
+    change.addEventListener("click", function () {
+        var script = document.createElement("script")
+        script.src = "http://localhost:8080/getNews?callback=appendHtml"
+        document.head.appendChild(script)
+        document.head.removeChild(script)
+    })
+
 
 </script>
 </body>
