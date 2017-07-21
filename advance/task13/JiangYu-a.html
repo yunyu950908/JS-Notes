@@ -38,11 +38,8 @@
     <div class="main">
         <input type="text" placeholder="http://a.liyu0906.cn:8080/JiangYu-a.html">
     </div>
-
     <iframe src="http://b.liyu0906.cn:8080/JiangYu-b.html" frameborder="0"></iframe>
-
 </div>
-
 <script>
     document.querySelector('.main input').addEventListener('input', function () {
         window.frames[0].document.querySelector('input').value = this.value;
