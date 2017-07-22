@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo1</title>
+    <meta charset="UTF-8">
+    <style type=text/css>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .ct {
+            margin: 20px;
+        }
+
+        /*选中样式*/
+        .nav-active {
+            background: #ccc;
+            color: #ec0000 !important;
+        }
+
+        .show-active {
+            display: flex !important;
+        }
+
+        /*tab导航*/
+        .tab-nav {
+            /*padding: 10px;*/
+            width: 300px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+            display: flex;
+
+        }
+
+        .tab-nav > li {
+            flex-grow: 1;
+            text-align: center;
+            border-left: 1px solid #ccc;
+            cursor: pointer;
+            color: #333;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .tab-nav > li:first-child {
+            border: none;
+        }
+
+        /*tab展示*/
+
+        .tab-show {
+            width: 700px;
+            border: 1px solid #ccc;
+            border-radius: 0 6px 6px 6px;
+            display: none;
+            flex-wrap: wrap;
+        }
+
+        .tab-show img {
+            width: 150px;
+            margin: 15px 0 0 0;
+        }
+
+        .tab-show > li {
+            width: 220px;
+            height: 220px;
+            box-sizing: border-box;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-show > li.m-top {
+            margin-top: 0;
+            border-top: none;
+        }
+
+        .tab-show > li.m-right {
+            margin-right: 0;
+            border-right: none;
+        }
+
+        .tab-show > li.m-bottom {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .tab-show > li.m-left {
+            margin-left: 0;
+            border-left: none;
+        }
+
+        /*hover遮罩*/
+        .tab-show > li > .cover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: default;
+            transition-delay: .4s;
+        }
+
+        .cover > a {
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid indianred;
+            border-radius: 6px;
+            color: indianred;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .title, .price {
+            font-size: 12px;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .title h3 {
+            color: #333;
+            font-weight: normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .price p {
+            color: #ec0000;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--11111-->
+<div class="ct">
+    <ul class="tab-nav">
+        <li class="nav-active">tabtab1</li>
+        <li>tabtab2</li>
+        <li>tabtab3</li>
+    </ul>
+    <ul class="tab-show show-active">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--22222-->
+<div class="ct">
+    <ul class="tab-nav">
+        <li class="nav-active">tabtab1</li>
+        <li>tabtab2</li>
+        <li>tabtab3</li>
+    </ul>
+    <ul class="tab-show show-active">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--33333-->
+<div class="ct">
+    <ul class="tab-nav">
+        <li class="nav-active">tabtab1</li>
+        <li>tabtab2</li>
+        <li>tabtab3</li>
+    </ul>
+    <ul class="tab-show show-active">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-show">
+        <li class="m-top m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-top m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-left">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class="m-bottom m-right">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type=text/javascript src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    {
+        //图片。。
+
+        $(".ct ul:nth-of-type(2)").find("img").each(function () {
+            this.src = "http://img3.duitang.com/uploads/item/201410/21/20141021213028_XahP4.png"
+        })
+        $(".ct ul:nth-of-type(3)").find("img").each(function () {
+            this.src = "http://img4.duitang.com/uploads/item/201309/28/20130928211305_Ka8xJ.thumb.600_0.png"
+        })
+        $(".ct ul:nth-of-type(4)").find("img").each(function () {
+            this.src = "http://img4.duitang.com/uploads/item/201311/23/20131123194040_YLVHH.thumb.600_0.jpeg"
+        })
+
+
+        //绑定 nav
+        $(".tab-nav").on("click", "li", function () {
+            $(this).addClass("nav-active").siblings().removeClass("nav-active")
+            let $this = $(this),
+                index = $this.index()
+            $this.parents(".ct").find(".tab-show").eq(index).addClass("show-active").siblings().removeClass("show-active")
+        })
+
+        //绑定 show
+        $(".tab-show").on("mouseover", "li", function () {
+            $(this).find(".cover").addClass("show-active")
+        })
+        $(".tab-show").on("mouseout", "li", function () {
+            $(this).find(".cover").removeClass("show-active")
+        })
+    }
+</script>
+</body>
+</html>

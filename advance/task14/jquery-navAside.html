@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo1</title>
+    <meta charset="UTF-8">
+    <style type=text/css>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /*显示隐藏*/
+        .inner-nav {
+            display: none;
+        }
+
+        .inner-nav.active {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /*外层样式*/
+        .nav-aside {
+            box-sizing: border-box;
+            margin: 10px;
+            padding: 0 18px;
+            width: 200px;
+            height: 200px;
+            background: #c7171e;
+        }
+
+        .nav-aside > li {
+            padding-left: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-top: 1px solid rgba(211, 211, 211, .4);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-aside > li:first-child {
+            border: none;
+        }
+
+        .nav-aside > li > span {
+            font-size: large;
+            color: #fff;
+        }
+
+        /*内层样式*/
+
+        .inner-nav {
+            /*display: none;*/
+            width: 210px;
+            background: #fff;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 0;
+            left: 182px;
+        }
+
+        .inner-nav > li {
+            padding: 10px 20px;
+            width: 55px;
+            line-height: normal;
+        }
+
+        .inner-nav > li > a {
+            font-size: 12px;
+            color: #333;
+        }
+
+
+    </style>
+</head>
+<body>
+<ul class="nav-aside">
+    <li>
+        <a href="">nav1</a>
+        <span class="icon-goto">></span>
+        <ul class="inner-nav">
+            <li><a href="">goto1</a></li>
+            <li><a href="">goto2</a></li>
+            <li><a href="">goto3</a></li>
+            <li><a href="">goto4</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="">nav2</a>
+        <span class="icon-goto">></span>
+        <ul class="inner-nav">
+            <li><a href="">goto1</a></li>
+            <li><a href="">goto2</a></li>
+            <li><a href="">goto3</a></li>
+            <li><a href="">goto4</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="">nav3</a>
+        <span class="icon-goto">></span>
+        <ul class="inner-nav">
+            <li><a href="">goto1</a></li>
+            <li><a href="">goto2</a></li>
+            <li><a href="">goto3</a></li>
+            <li><a href="">goto4</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="">nav4</a>
+        <span class="icon-goto">></span>
+        <ul class="inner-nav">
+            <li><a href="">goto1</a></li>
+            <li><a href="">goto2</a></li>
+            <li><a href="">goto3</a></li>
+            <li><a href="">goto4</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="">nav5</a>
+        <span class="icon-goto">></span>
+        <ul class="inner-nav">
+            <li><a href="">goto1</a></li>
+            <li><a href="">goto2</a></li>
+            <li><a href="">goto3</a></li>
+            <li><a href="">goto4</a></li>
+        </ul>
+    </li>
+</ul>
+
+<script type=text/javascript src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    {
+        let navAside = $(".nav-aside")
+        navAside.on("mouseover", "li", function () {
+            $(this).find(".inner-nav").addClass("active")
+        })
+        navAside.on("mouseout", "li", function () {
+            $(this).find(".inner-nav").removeClass("active")
+        })
+    }
+</script>
+</body>
+</html>

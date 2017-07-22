@@ -1,24 +1,289 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>demo</title>
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <title>demo1</title>
+    <meta charset="UTF-8">
+    <style type=text/css>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .ct {
+            margin: 20px;
+            width: 720px;
+        }
+
+        /*tab展示*/
+
+        .tab-show {
+            width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .tab-show img {
+            width: 150px;
+            margin: 15px 0 0 0;
+        }
+
+        .tab-show > li {
+            width: 220px;
+            height: 220px;
+            box-sizing: border-box;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /*hover遮罩*/
+        .tab-show > li > .cover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: default;
+            transition-delay: .4s;
+        }
+
+        .cover > a {
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid indianred;
+            border-radius: 6px;
+            color: indianred;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .title, .price {
+            font-size: 12px;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .title h3 {
+            color: #333;
+            font-weight: normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .price p {
+            color: #ec0000;
+        }
+
+        /*添加按钮*/
+        .btn-add {
+            position: relative;
+            left: 10px;
+            padding: 8px 26px;
+            color: lightsalmon;
+            border: 1px solid lightsalmon;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+            transition: all .1s ease-in;
+        }
+
+        .btn-add:hover {
+            font-weight: bold;
+            color: red;
+            background: lightsalmon;
+            opacity: .5;
+        }
+
+    </style>
 </head>
 <body>
-<ul>
-    <li>test1</li>
-    <li>test2</li>
-    <li>test3</li>
-    <li>test4</li>
-    <li>test5</li>
-</ul>
+<!--11111-->
+<div class="ct">
+    <ul class="tab-show">
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+        <li class=" ">
+            <div class="cover">
+                <a href="" class="btn">立即抢购</a>
+            </div>
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="title">
+                <h3>Standing on shoulders of Gients</h3>
+            </div>
+            <div class="price">
+                <p>$999.99</p>
+            </div>
+        </li>
+    </ul>
+    <button class="btn-add">添加</button>
+</div>
 
-<script>
-    $('ul').on('click','li',function(e){
-        console.log(this)
-        console.log(e)
-    })
-    //对ul进行监听，使用childSelector这个参数，对子元素进行事件绑定
+<script type=text/javascript src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    {
+        $("img").each(function () {
+            this.src = "http://img01.skqkw.cn:888/dongman/2014/07/25/23/2014072523312122682.jpg"
+        })
+
+        //遮罩的显示/隐藏
+        $(".tab-show").on("mouseover", "li", function () {
+            $(this).find(".cover").css({"display": "block"})
+        })
+        $(".tab-show").on("mouseout", "li", function () {
+            $(this).find(".cover").css({"display": "none"})
+        })
+
+        //添加按钮事件
+
+        $(".btn-add").on("click", function () {
+            $.each(products, function (i, j) {
+                var html = createHtml(j)
+                $(".tab-show").append(html)
+            })
+        })
+
+        //阻止a元素默认事件
+
+        $(".ct").on("click","a",function (e) {
+            e.preventDefault()
+        })
+
+
+        function createHtml(sth) {
+            let html = ""
+            html += '<li class=" ">'
+            html += '<div class="cover">'
+            html += '<a href="" class="btn">立即抢购</a>'
+            html += '</div>'
+            html += '<div class="image">'
+            html += '<img src="' + sth.img + '" alt="">'
+            html += '</div>'
+            html += '<div class="title">'
+            html += '<h3>' + sth.name + '</h3>'
+            html += '</div>'
+            html += '<div class="price">'
+            html += '<p>' + sth.price + '</p>'
+            html += '</div>'
+            html += '</li>'
+            return html
+        }
+
+
+        var products = [
+            {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手 猴哥款',
+                price: '￥405.00'
+            }, {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金转运珠 猴哥款',
+                price: '￥100.00'
+            }, {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手链 3D猴哥款',
+                price: '￥45.00'
+            }
+        ];
+
+
+    }
 </script>
 </body>
 </html>
