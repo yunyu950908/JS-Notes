@@ -1,133 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>jsTest</title>
-    <style type=text/css>
-        * {
-            margin: 0;
-            padding: 0;
-            outline: none;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        li, .loadMore {
-            cursor: pointer;
-            border-radius: 5px;
-            transition: .2s ease-in;
-        }
-
-        li:hover {
-            background: lightseagreen;
-        }
-
-        .loadMore:hover {
-            background: rgba(236, 97, 73, .05);
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container ul {
-            padding: 12px;
-        }
-
-        .container ul li {
-            color: #333;
-            margin-top: 12px;
-            padding: 12px;
-            border: 1px solid #ccc;
-        }
-
-        .loadMore {
-            display: block;
-            margin: 0 auto;
-            padding: 10px 18px;
-            border: 1px solid lightcoral;
-            background: #fff;
-            color: lightcoral;
-        }
-
-    </style>
+    <title>demo</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <ul class="newsList">
-        <li>内容1</li>
-        <li>内容2</li>
-    </ul>
-</div>
-<button class="loadMore">加载更多</button>
-</body>
-<script type="text/javascript">
-    var nextIndex = 3,
-        newsList = document.querySelector(".newsList"),
-        loadMore = document.querySelector(".loadMore"),
-        statusLock = false
+<ul>
+    <li>test1</li>
+    <li>test2</li>
+    <li>test3</li>
+    <li>test4</li>
+    <li>test5</li>
+</ul>
 
-    //绑定事件
-    loadMore.addEventListener("click", function () {
-        if (statusLock)return
-        loadData(renderPage)
+<script>
+    $('ul').on('click','li',function(e){
+        console.log(this)
+        console.log(e)
     })
-
-    //调用
-    function loadData(callback) {
-        ajax({
-            type: "get",
-            url: "/getInfo",
-            data: {
-                index: nextIndex,
-                length: 6
-            },
-            onSuccess: callback,
-            onError: function () {
-                console.log("error")
-            }
-        })
-    }
-
-    //AJAX
-    function ajax(options) {
-        var xhr = new XMLHttpRequest()
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200 || xhr.status === 304) {
-                    statusLock = false
-                    options.onSuccess(JSON.parse(xhr.responseText))
-                    nextIndex += 6
-                } else {
-                    options.onError()
-                }
-            }
-        }
-        statusLock = true
-        var query = "?"
-        for (key in options.data) {
-            query += key + "=" + options.data[key] + "&"
-        }
-        query = query.substr(0, query.length - 1)
-        xhr.open(options.type, options.url + query, true)
-        xhr.send()
-    }
-
-    //请求到的数据添加到页面
-    function renderPage(results) {
-        var frag = document.createDocumentFragment()
-        for (var i = 0; i < results.length; i++) {
-            //console.log(xhr.responseText)
-            var news = document.createElement("li")
-            news.innerText = results[i]
-            frag.appendChild(news)
-        }
-        newsList.appendChild(frag)
-    }
-
-
+    //对ul进行监听，使用childSelector这个参数，对子元素进行事件绑定
 </script>
+</body>
 </html>
