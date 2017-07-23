@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>tab 切换</title>
+    <style type=text/css>
+        * {
+            outline: none;
+        }
+
+        .ct{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .btn1, .btn2 {
+            font-weight: bold;
+            color: lightseagreen;
+            background: #fff;
+            display: block;
+            margin: 10px auto;
+            padding: 12px 28px;
+            border: 2px solid lightseagreen;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn2 {
+            margin-top: 2000px;
+        }
+
+        .scroll {
+            padding: 12px 28px;
+            border-radius: 6px;
+            background: lightseagreen;
+            position: fixed;
+        }
+
+        .div2 {
+            width: 450px;
+            height: 300px;
+            margin: 10px auto;
+            text-align: center;
+            border: 1px solid #333;
+            border-radius: 6px;
+        }
+
+        .div2 span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .div2:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            visibility: hidden;
+            vertical-align: middle;
+        }
+
+        .ipt {
+            display: block;
+            margin: 10px auto;
+            padding: 12px 28px;
+            width: 450px;
+            border: 2px solid #888;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .sel,.div3 {
+            display: inline-block;
+            margin: 10px auto;
+            padding: 12px 28px;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .div3 span{
+            display: inline-block;
+            width: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="ct">
+    <button class="btn1">点我变色</button>
+    <div class="scroll">卷去高度为：<span></span></div>
+    <div class="div2"><span>鼠标移过来变颜色</span></div>
+    <input type="text" placeholder="我是input" class="ipt">
+    <select name="" id="" class="sel">
+        <option value="">option1</option>
+        <option value="">option2</option>
+        <option value="">option3</option>
+        <option value="">option4</option>
+        <option value="">option5</option>
+    </select>
+    <div class="div3">选择的是：<span>option1</span></div>
+    <button class="btn2">返回顶部</button>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    //当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+    $(".btn1").on("click", function () {
+        $(this).css({"background": "lightpink"})
+        setTimeout(function () {
+            $(".btn1").css({"background": "lightblue"})
+        }, 1000)
+    })
+
+    //当窗口滚动时，获取垂直滚动距离
+    $(window).on("scroll", function () {
+        $(".scroll span").text($(window).scrollTop())
+    })
+
+    //当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+    $(".div2").on("mouseover", function () {
+        $(this).css({"background": "lightpink"})
+    })
+    $(".div2").on("mouseout", function () {
+        $(this).css({"background": "#fff"})
+    })
+
+    //当鼠标激活 input 输入框时让输入框边框变为蓝色
+    $(".ipt").on("focus", function () {
+        $(this).css({"borderColor": "lightblue"})
+    })
+
+    //当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+    $(".ipt").on("focusout", function () {
+        $(this).css({"borderColor": "#888"})
+        console.log($(this).val())
+    })
+
+    //当输入框内容改变时把输入框里的文字小写变为大写
+    $(".ipt").on("input", function () {
+        $(this).val($(this).val().toUpperCase())
+    })
+
+    //当选择 select 后，获取用户选择的内容
+    $(".sel").on("change",function () {
+        $(".div3 span").text($(this).find("option:selected").text())
+    })
+    
+</script>
+</body>
+</html>
