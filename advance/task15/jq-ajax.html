@@ -64,7 +64,7 @@
         statusLock = true
     $(".load").on("click", function () {
         $(this).text("loading...")
-        $.get("/loadMore?index=" + index + "&length=3")
+        $.get("http://45.77.19.95:8080/loadMore?index=" + index + "&length=3")
             .done(function (data) {
                 if (statusLock == false) return
                 var frag = document.createDocumentFragment()
