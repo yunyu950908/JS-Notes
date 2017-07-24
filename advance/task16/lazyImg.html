@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style type=text/css>
+        .ct {
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .ct ul {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px dotted #888;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .ct ul > li {
+            width: 280px;
+            float: left;
+            margin: 10px;
+        }
+
+        .ct ul > li > img {
+            width: 280px;
+            height: 280px;
+            background: url("default.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="ls">
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+    </ul>
+</div>
+<script type=text/javascript>
+    {
+
+        setDataSrc($(".ct ul>li>img"), "JSON/picsList.txt?_=" + Math.random())
+
+
+        $(".ct ul li img").each(function (i, j) {
+            scroll($(j))
+        })
+
+        //AJAX请求
+        //把AJAX请求道的JSON数据存入自定义属性
+        function setDataSrc($node, getUrl) {
+            $.get(getUrl)
+                .done(function (json) {
+                    var jsonData = JSON.parse(json)
+                    $node.each(function (i) {
+                        $(this).attr("data-src", jsonData[i].img)
+                    })
+                })
+                .fail(function () {
+                    console.log("something wrong")
+                })
+        }
+
+        //滚动时判断是否可见及是否加载
+        function scroll($node) {
+            $(window).on("scroll", function () {
+                if (isVisible($node) && isLoad($node)) {
+                    $node.data("load", "loaded")
+                    console.log("true")
+                    var dataSrc = $node.attr("data-src")
+                    $node.attr("src", dataSrc)
+                }
+            })
+        }
+
+        //判断是否出现在视窗
+        function isVisible($node) {
+            var offsetTop = $node.offset().top + $node.height(),
+                scrollTop = $(window).scrollTop(),
+                windowHeight = $(window).height(),
+                windowTotal = scrollTop + windowHeight
+            if (offsetTop < windowTotal && offsetTop > scrollTop) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        //判断是否加载过
+        function isLoad($node) {
+            if (!$node.data("load")) return true
+        }
+    }
+</script>
+</body>
+</html>

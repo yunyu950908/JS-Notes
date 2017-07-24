@@ -87,7 +87,7 @@
     </li>-->
 </ul>
 
-<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript">
     var news = document.getElementById("news"), imgList = news.getElementsByTagName("img");
     var jsonData = null;
@@ -101,6 +101,8 @@
             if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
                 var val = xhr.responseText;
                 jsonData = utils.formatJSON(val);
+                console.log(val.length)
+                console.log(jsonData.length)
             }
         };
         xhr.send(null);
