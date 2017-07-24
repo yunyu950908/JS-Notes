@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type=text/css>
+        div {
+            width: 100px;
+            height: 60px;
+            margin: 2000px auto;
+            background: #00b88d;
+        }
+
+    </style>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="div1"></div>
+<script type=text/javascript>
+    {
+        scroll($(".div1"))
+
+        //滚动时判断是否可见及是否加载
+        function scroll($node) {
+            $(window).on("scroll", function () {
+                if (isVisible($node) && isLoad($node)) {
+                    $node.data("load", "loaded")
+                    console.log("true")
+                }
+            })
+        }
+
+        //判断是否出现在视窗
+        function isVisible($node) {
+            var offsetTop = $node.offset().top,
+                scrollTop = $(window).scrollTop(),
+                windowHeight = $(window).height(),
+                windowTotal = scrollTop + windowHeight
+            if (offsetTop < windowTotal && offsetTop > scrollTop) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        //判断是否加载过
+        function isLoad($node) {
+            if (!$node.data("load")) return true
+        }
+    }
+</script>
+</body>
+</html>
