@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banner</title>
+    <style type=text/css>
+
+        body, div, ul, li, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .ct {
+            margin: 20px;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ct .banner {
+            position: absolute;
+        }
+
+        .ct .banner > li {
+            position: absolute;
+            display: none;
+        }
+
+        .ct .banner > li:first-child {
+            display: block;
+        }
+
+        /*箭头按钮*/
+        .ct .btn {
+            display: block;
+            width: 35px;
+            height: 35px;
+            line-height: 32px;
+            border: 1px solid lightseagreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            margin-top: -17.5px;
+            text-align: center;
+            color: lightseagreen;
+            font-size: 16px;
+        }
+
+        .ct .btn:hover {
+            background: rgba(255, 255, 255, .4)
+        }
+
+        .ct .pre {
+            left: 10px;
+        }
+
+        .ct .next {
+            right: 10px;
+        }
+
+        /*快速定位*/
+        .goto {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            bottom: 20px;
+            display: flex;
+        }
+
+        .goto > li {
+            display: block;
+            width: 30px;
+            height: 10px;
+            border: 1px solid #c2c2c2;
+            border-radius: 6px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .goto > li:hover {
+            background: rgba(255, 255, 255, .4)
+        }
+
+        .active {
+            background: rgba(255, 255, 255, .6)
+        }
+
+    </style>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+<div class="ct">
+    <ul class="banner">
+        <li><img src="http://www.jder.net/wp-content/uploads/2015/09/20150922025546-48.jpg" alt=""></li>
+        <li><img src="http://cdn.duitang.com/uploads/item/201311/09/20131109212605_YsZkU.thumb.600_0.jpeg" alt=""></li>
+        <li><img src="http://img4.duitang.com/uploads/item/201406/03/20140603205156_haM2U.thumb.600_0.jpeg" alt=""></li>
+        <li><img src="http://g.hiphotos.baidu.com/zhidao/pic/item/d52a2834349b033b455fe6921dce36d3d439bda6.jpg" alt="">
+        </li>
+    </ul>
+    <a href="##" class="pre btn"><</a>
+    <a href="##" class="next btn">></a>
+    <ul class="goto">
+        <li class='active'></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script type=text/javascript>
+
+    var $imgs = $('.banner>li'),
+        $goto = $('.goto>li'),
+        $preBtn = $('.pre'),
+        $nextBtn = $('.next'),
+        $btn = $('.btn')
+
+
+    //设置动画状态锁
+    var isAnimate = false
+
+    var imgCount = $imgs.length
+
+    //当前显示页面的索引
+    var curidx = 0
+
+    $preBtn.click(function () {
+        playNext((imgCount + curidx - 1) % imgCount)
+    })
+
+
+    $nextBtn.click(function () {
+        playNext((curidx + 1) % imgCount)
+    })
+
+    $goto.click(function () {
+        idx = $(this).index();
+        playNext(idx)
+    })
+
+
+    //淡入淡出事件
+    function playNext(idx) {
+        if (isAnimate) return;
+        isAnimate = true
+        $imgs.eq(curidx).fadeOut();
+        $imgs.eq(idx).fadeIn('normal', function () {
+            isAnimate = false
+        })
+        curidx = idx
+        gotoBg()
+        console.log(curidx)
+    }
+
+
+    //定位按钮背景色
+    function gotoBg() {
+        $goto.removeClass('active').eq(curidx).addClass('active')
+    }
+
+    //
+    //    //每隔两秒自动触发事件
+    var timer = setInterval(function () {
+        playNext((curidx + 1) % imgCount)
+    }, 2000)
+    //
+    //
+    //    //鼠标悬停事件
+    $btn.mouseover(function () {
+        clearInterval(timer)
+    })
+    $btn.mouseout(function () {
+        timer = setInterval(function () {
+            playNext((curidx + 1) % imgCount)
+        }, 2000)
+    })
+
+
+</script>
+</body>
+</html>
