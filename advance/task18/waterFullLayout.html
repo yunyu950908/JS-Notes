@@ -65,17 +65,17 @@
 </body>
 <script type=text/javascript>
 
-    var waterFull = !function () {
+    var waterFall = (function () {
         //定义init()
         function init() {
-            waterFull()
+            waterFall()
             $(window).resize(function () {
-                waterFull()
+                waterFall()
             })
         }
 
-        //定义waterFull
-        function waterFull() {
+        //定义waterFall
+        function waterFall() {
             //获取一行能排多少列
             var colLength = parseInt($('.ct').width() / $('.p-w').outerWidth(true))
             //初始化一个数组，长度为列数
@@ -99,11 +99,11 @@
         }
 
         return {
-            init: init()
+            init: init
         }
-    }()
+    })()
 
     //启动init()
-    waterFull.init()
+    waterFall.init()
 </script>
 </html>
