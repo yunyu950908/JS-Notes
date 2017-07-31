@@ -1,0 +1,26 @@
+<script>
+
+    //问题6： 创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法
+    //ct属性，GoTop 对应的 DOM 元素的容器
+    //target属性， GoTop 对应的 DOM 元素
+    //bindEvent 方法， 用于绑定事件
+    //createNode 方法， 用于在容器内创建节点
+
+    function GoTop() {
+        this.ct = ct;
+        this.target = target;
+    }
+
+    GoTop.prototype = {
+        construct: GoTop,
+        bindEvent: function bindEvent() {
+            this.addEventListener("click", function () {
+                ct.scrollTop = 0
+            })
+        },
+        createNode:function createNode(node) {
+            var createNode=document.createElement(node);
+            this.ct.appendChild(createNode)
+        }
+    }
+</script>

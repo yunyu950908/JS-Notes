@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .btn {
+            width: 100px;
+            height: 100px;
+            background: #000fff;
+        }
+    </style>
+</head>
+<body>
+<div class="btn"></div>
+<script>
+    var module = {
+        bind: function ($btn) {
+            var _this = this //this指调用这个方法对象，将其保存在_this中
+            $btn.on('click', function () {
+                console.log(this) //this指什么 // 被点击的$btn
+                _this.showMsg() //如果直接使用this获取不到showMsg()
+            })
+        },
+
+        showMsg: function () {
+            console.log('饥人谷');
+        }
+    }
+    module.bind($(".btn"))
+</script>
+</body>
+</html>

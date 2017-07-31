@@ -1,0 +1,15 @@
+<script>
+    //问题2： 如何通过构造函数的方式创建一个拥有属性和方法的对象?
+    function Person(name, age, sex) {
+        this.name = name;
+        this.age - age;
+        this.sex = sex;
+        this.say = function () {
+            alert('my name is:' + this.name)
+        }
+    }
+
+    Person.prototype.say = function () {
+        alert('my name is:' + this.name)
+    }
+</script>
