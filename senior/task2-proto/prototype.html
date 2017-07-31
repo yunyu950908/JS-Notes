@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<script>
+    //问题9：对String做扩展，实现如下方式获取字符串中频率最高的字符
+
+    String.prototype.getMostOften = function () {
+        let dict = [], arr = [], curArr = [];
+        //将传入字符串转换成数组，遍历判断是否存在，有就+1，没有就=1
+        this.split("").forEach((i) => {
+            dict[i] = dict[i] ? (++dict[i]) : 1;
+        })
+        console.log(dict)
+        //遍历键值对，将值放入arr
+        for (key in dict) {
+            arr.push(dict[key])
+        }
+        console.log(arr)
+        //获取出现的最大次数
+        let mostTimes = Math.max.apply(null, arr);
+        //遍历dict的键值对，找出与最大次数想匹配的键
+        for (key in dict) {
+            if (dict[key] === mostTimes) {
+                curArr.push(key);
+            }
+        }
+        return curArr;
+    }
+
+    var str = 'ahbbccdeddddfg';
+    var ch = str.getMostOften();
+    console.log(ch); //d , 因为d 出现了5次
+</script>
+</body>
+</html>
