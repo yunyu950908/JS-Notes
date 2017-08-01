@@ -1,24 +1,17 @@
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>木桶布局</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link href="" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>龙哥的宝藏</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <style>
+    <style type=text/css>
         * {
             margin: 0;
             padding: 0;
         }
 
-
-        .img-preview{
-            width: 1000px;
+        .img-preview {
+            width: 1200px;
             margin: 0 auto;
         }
 
@@ -32,71 +25,92 @@
             clear: both;
         }
 
-        .img-box {
+        .row-box {
             float: left;
         }
 
-        .img-line .img-box:first-child {
+        .img-line .row-box:first-child {
             padding-left: 0;
+        }
+
+        .btn {
+            width: 6rem;
+            height: 2rem;
+            outline: none;
+            border: 1px solid lightseagreen;
+            border-radius: .5rem;
+            background: transparent;
+            color: lightseagreen;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+        .btn:hover{
+            background: lightblue;
         }
     </style>
 </head>
-
 <body>
-<div class="img-preview">
-
-</div>
-
-<script>
-
-    function Barrels($ct) {
+<div class="img-preview"></div>
+<button class="btn">功能还没做</button>
+<script type=text/javascript>
+    function Barrel(imgNum, baseHeight, $ct) {
         this.$ct = $ct;
-        this.imgNum = 40;
-        this.baseHeight = 100;
+        //this.imgNum = imgNum;
+        this.baseHeight = baseHeight;
         this.rowList = [];
-        this.loadImg();
-
+        this.imgLoad(imgNum);
     }
 
-    Barrels.prototype = {
-
-        loadImg: function() {
-            var _this = this;
-            var imgUrls = this.getImgUrls(100);
-            $.each(imgUrls,function(idx, url){
-                console.log(url);
-                var img = new Image();
-                img.src = url;
-                img.onload = function(){
-                    var originWidth = img.width,
-                        originHeight = img.height,
-                        ratio = originWidth/originHeight;
-
-                    var imgInfo = {
-                        target: $(img),
-                        width: _this.baseHeight*ratio,
-                        height: _this.baseHeight,
-                        ratio: ratio
-                    };
-                    _this.render(imgInfo);
-                }
-            });
+    Barrel.prototype = {
+        getImgUrl: function (num) {
+            let urls = [];
+            for (let i = 0; i < num; i++) {
+                urls.push('https://uploadbeta.com/api/pictures/random/?key=推女郎&sort=' + parseInt(Math.random() * 1000))
+            }
+            //console.log(urls)
+            return urls;
         },
 
+        imgLoad: function (num) {
+            let _this = this,
+                imgUrls = this.getImgUrl(num);
+            //循环每一个url，每次循环创建一张图
+            imgUrls.forEach(function (imgUrl) {
+                //console.log(imgUrl);
+                let img = new Image();
+                img.src = imgUrl;
+                img.onload = function () {
+                    let originWidth = img.width,
+                        originHeight = img.height,
+                        ratio = originWidth / originHeight;
+                    //console.log($(img))
+                    let imgInfo = {
+                        target: $(img),
+                        width: _this.baseHeight * ratio,
+                        height: _this.baseHeight,
+                        ratio: ratio
+                    }
+                    _this.render(imgInfo)
+                }
+            })
+        },
 
-        render: function(imgInfo){
-            var _this = this;
-            var rowList = this.rowList,
+        render: function (imgInfo) {
+            let _this = this;
+            let rowList = this.rowList,
                 rowWidth = 0,
                 rowHeight = 0,
                 clientWidth = this.$ct.width(),
                 lastImgInfo = imgInfo;
-
             this.rowList.push(imgInfo);
-            $.each(rowList,function(idx, imgInfo){
-                rowWidth += imgInfo.width;
-                console.log(imgInfo)
-                if(rowWidth  > clientWidth ){
+            //console.log(this.rowList)
+            rowList.forEach(function (e) {
+                //console.log(e)
+                rowWidth += e.width;
+                //console.log(rowWidth)
+                if (rowWidth > clientWidth) {
                     rowList.pop();
                     rowWidth = rowWidth - lastImgInfo.width;
                     rowHeight = clientWidth * _this.baseHeight / rowWidth;
@@ -105,45 +119,32 @@
                     _this.rowList = [];
                     _this.rowList.push(lastImgInfo);
                 }
-            });
+            })
         },
 
-        createRow: function(rowHeight){
-            console.log('createRow');
-            var $rowCt = $('<div class="img-row"></div>');
-            $.each(this.rowList, function(idx, imgInfo){
-                var $imgCt = $('<div class="img-box"></div>'),
+        createRow: function (rowHeight) {
+            let $rowCt = $('<div class="img-row"></div>');
+            this.rowList.forEach(function (imgInfo) {
+                let $imgCt = $('<div class="row-box"></div>'),
                     $img = imgInfo.target;
                 $img.height(rowHeight);
                 $imgCt.append($img);
                 $rowCt.append($imgCt);
-            });
-            console.log(this.$ct)
+            })
+            //console.log(this.$ct)
             this.$ct.append($rowCt);
-
-
         },
-        getImgUrls: function(num) {
-            var color, width, height, urls = [];
-            for (var i = 0; i < num; i++) {
-                color = Math.random().toString(16).substring(2, 8);
-                width = Math.floor(Math.random() * 100 + 50);
-                height = Math.floor(Math.random() * 30 + 50);
-                urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
-            }
-            return urls;
-        }
-
     }
 
 
-    var barrels = new Barrels($('.img-preview'));
+    let test = new Barrel(20, 300, $(".img-preview"))
+    $(".btn").on("click",function () {
+        new Barrel(20, 300, $(".img-preview"))
+    })
+    
+
 
 
 </script>
-
-
-
 </body>
-
 </html>
