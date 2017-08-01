@@ -10,8 +10,7 @@
             padding: 0;
         }
 
-
-        .img-preview{
+        .img-preview {
             width: 1000px;
             margin: 0 auto;
         }
@@ -26,11 +25,11 @@
             clear: both;
         }
 
-        .img-box {
+        .row-box {
             float: left;
         }
 
-        .img-line .img-box:first-child {
+        .img-line .row-box:first-child {
             padding-left: 0;
         }
     </style>
@@ -38,6 +37,89 @@
 <body>
 <div class="img-preview"></div>
 <script type=text/javascript>
+    function Barrel(imgNum, baseHeight, $ct) {
+        this.$ct = $ct;
+        this.imgNum = imgNum;
+        this.baseHeight = baseHeight;
+        this.rowList = [];
+        this.imgLoad(imgNum);
+    }
+
+    Barrel.prototype = {
+        getImgUrl: function (num) {
+            let urls = [];
+            for (let i = 0; i < num; i++) {
+                urls.push('https://uploadbeta.com/api/pictures/random/?key=推女郎&sort=' + parseInt(Math.random() * 1000))
+            }
+            //console.log(urls)
+            return urls;
+        },
+
+        imgLoad: function (num) {
+            let _this = this,
+                imgUrls = this.getImgUrl(num);
+            //循环每一个url，每次循环创建一张图
+            imgUrls.forEach(function (imgUrl) {
+                //console.log(imgUrl);
+                let img = new Image();
+                img.src = imgUrl;
+                img.onload = function () {
+                    let originWidth = img.width,
+                        originHeight = img.height,
+                        ratio = originWidth / originHeight;
+                    //console.log($(img))
+                    let imgInfo = {
+                        target: $(img),
+                        width: _this.baseHeight * ratio,
+                        height: _this.baseHeight,
+                        ratio: ratio
+                    }
+                    _this.render(imgInfo)
+                }
+            })
+        },
+
+        render: function (imgInfo) {
+            let _this = this;
+            let rowList = this.rowList,
+                rowWidth = 0,
+                rowHeight = 0,
+                clientWidth = this.$ct.width(),
+                lastImgInfo = imgInfo;
+            this.rowList.push(imgInfo);
+            //console.log(this.rowList)
+            rowList.forEach(function (e) {
+                //console.log(e)
+                rowWidth += e.width;
+                //console.log(rowWidth)
+                if (rowWidth > clientWidth) {
+                    rowList.pop();
+                    rowWidth = rowWidth - lastImgInfo.width;
+                    rowHeight = clientWidth * _this.baseHeight / rowWidth;
+
+                    _this.createRow(rowHeight);
+                    _this.rowList = [];
+                    _this.rowList.push(lastImgInfo);
+                }
+            })
+        },
+
+        createRow: function (rowHeight) {
+            let $rowCt = $('<div class="img-row"></div>');
+            this.rowList.forEach(function (imgInfo) {
+                let $imgCt = $('<div class="row-box"></div>'),
+                    $img = imgInfo.target;
+                $img.height(rowHeight);
+                $imgCt.append($img);
+                $rowCt.append($imgCt);
+            })
+            //console.log(this.$ct)
+            this.$ct.append($rowCt);
+        },
+    }
+
+    let test = new Barrel(50, 300, $(".img-preview"))
+
 
 </script>
 </body>

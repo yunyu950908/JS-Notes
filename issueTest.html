@@ -93,9 +93,9 @@
                 lastImgInfo = imgInfo;
 
             this.rowList.push(imgInfo);
-
             $.each(rowList,function(idx, imgInfo){
                 rowWidth += imgInfo.width;
+                console.log(imgInfo)
                 if(rowWidth  > clientWidth ){
                     rowList.pop();
                     rowWidth = rowWidth - lastImgInfo.width;

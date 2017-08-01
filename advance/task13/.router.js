@@ -20,9 +20,9 @@ router.get('/getNews', function (req, res) {
 
     //CORS
 
-    // res.header("Access-Control-Allow-Origin", "*")
-    // res.send(data)
-    // console.log(data)
+    res.header("Access-Control-Allow-Origin", "*")
+    res.send(data)
+    console.log(data)
 
 
     //JSONP
