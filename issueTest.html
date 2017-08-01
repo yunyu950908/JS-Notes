@@ -13,7 +13,7 @@
         }
 
         .img-preview {
-            width: 1200px;
+            /*width: 1200px;*/
             margin: 0 auto;
         }
 
@@ -48,7 +48,8 @@
             cursor: pointer;
             transition: all .5s ease;
         }
-        .btn:hover{
+
+        .btn:hover {
             background: lightblue;
         }
     </style>
@@ -140,11 +141,9 @@
 
 
     let test = new Barrel(20, 300, $(".img-preview"))
-    $(".btn").on("click",function () {
+    $(".btn").on("click", function () {
         new Barrel(20, 300, $(".img-preview"))
     })
-    
-
 
 
 </script>
