@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>龙哥的宝藏</title>
+    <title>木桶流</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <style type=text/css>
         * {
@@ -11,7 +11,7 @@
         }
 
         .img-preview {
-            max-width: 1200px;
+            width: 1000px;
             margin: 0 auto;
         }
 
@@ -42,7 +42,7 @@
             background: transparent;
             color: lightseagreen;
             display: block;
-            margin: 10rem auto;
+            margin: 5rem auto;
             cursor: pointer;
             transition: all .5s ease;
         }
@@ -78,11 +78,11 @@
             let _this = this,
                 imgUrls = this.getImgUrl(num);
             //循环每一个url，每次循环创建一张图
-            imgUrls.forEach(function (imgUrl) {
+            imgUrls.forEach((imgUrl) => {
                 //console.log(imgUrl);
                 let img = new Image();
                 img.src = imgUrl;
-                img.onload = function () {
+                img.onload = () => {
                     let originWidth = img.width,
                         originHeight = img.height,
                         ratio = originWidth / originHeight;
@@ -107,7 +107,7 @@
                 lastImgInfo = imgInfo;
             this.rowList.push(imgInfo);
             //console.log(this.rowList)
-            rowList.forEach(function (e) {
+            rowList.forEach((e) => {
                 //console.log(e)
                 rowWidth += e.width;
                 //console.log(rowWidth)
@@ -125,7 +125,7 @@
 
         createRow: function (rowHeight) {
             let $rowCt = $('<div class="img-row"></div>');
-            this.rowList.forEach(function (imgInfo) {
+            this.rowList.forEach((imgInfo) => {
                 let $imgCt = $('<div class="row-box"></div>'),
                     $img = imgInfo.target;
                 $img.height(rowHeight);
@@ -137,13 +137,11 @@
         },
     }
 
+    let test = new Barrel(50, 300, $(".img-preview"))
 
-    let test = new Barrel(20, 300, $(".img-preview"))
     $(".btn").on("click", function () {
         new Barrel(20, 300, $(".img-preview"))
     })
-
-
 </script>
 </body>
 </html>

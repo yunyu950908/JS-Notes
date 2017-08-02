@@ -32,10 +32,29 @@
         .img-line .row-box:first-child {
             padding-left: 0;
         }
+
+        .btn {
+            width: 6rem;
+            height: 2rem;
+            outline: none;
+            border: 1px solid lightseagreen;
+            border-radius: .5rem;
+            background: transparent;
+            color: lightseagreen;
+            display: block;
+            margin: 5rem auto;
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+
+        .btn:hover {
+            background: lightblue;
+        }
     </style>
 </head>
 <body>
 <div class="img-preview"></div>
+<button class="btn">功能还没做</button>
 <script type=text/javascript>
     function Barrel(imgNum, baseHeight, $ct) {
         this.$ct = $ct;
@@ -59,11 +78,11 @@
             let _this = this,
                 imgUrls = this.getImgUrl(num);
             //循环每一个url，每次循环创建一张图
-            imgUrls.forEach(function (imgUrl) {
+            imgUrls.forEach((imgUrl) => {
                 //console.log(imgUrl);
                 let img = new Image();
                 img.src = imgUrl;
-                img.onload = function () {
+                img.onload = () => {
                     let originWidth = img.width,
                         originHeight = img.height,
                         ratio = originWidth / originHeight;
@@ -88,7 +107,7 @@
                 lastImgInfo = imgInfo;
             this.rowList.push(imgInfo);
             //console.log(this.rowList)
-            rowList.forEach(function (e) {
+            rowList.forEach((e) => {
                 //console.log(e)
                 rowWidth += e.width;
                 //console.log(rowWidth)
@@ -106,7 +125,7 @@
 
         createRow: function (rowHeight) {
             let $rowCt = $('<div class="img-row"></div>');
-            this.rowList.forEach(function (imgInfo) {
+            this.rowList.forEach((imgInfo) => {
                 let $imgCt = $('<div class="row-box"></div>'),
                     $img = imgInfo.target;
                 $img.height(rowHeight);
@@ -120,7 +139,9 @@
 
     let test = new Barrel(50, 300, $(".img-preview"))
 
-
+    $(".btn").on("click", function () {
+        new Barrel(20, 300, $(".img-preview"))
+    })
 </script>
 </body>
 </html>
