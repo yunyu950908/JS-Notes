@@ -2,146 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>木桶流</title>
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>barrel</title>
     <style type=text/css>
         * {
             margin: 0;
             padding: 0;
         }
 
-        .img-preview {
-            width: 1000px;
+        .barrel {
+            width: 1200px;
             margin: 0 auto;
         }
 
-        .img-row {
-            margin-bottom: 8px;
-        }
-
-        .img-row:after {
-            content: "";
+        .barrel:after {
+            content: '';
             display: block;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
             clear: both;
         }
 
-        .row-box {
+        .img-box {
             float: left;
         }
 
-        .img-line .row-box:first-child {
-            padding-left: 0;
-        }
-
-        .btn {
-            width: 6rem;
-            height: 2rem;
-            outline: none;
-            border: 1px solid lightseagreen;
-            border-radius: .5rem;
-            background: transparent;
-            color: lightseagreen;
-            display: block;
-            margin: 5rem auto;
-            cursor: pointer;
-            transition: all .5s ease;
-        }
-
-        .btn:hover {
-            background: lightblue;
-        }
     </style>
 </head>
 <body>
-<div class="img-preview"></div>
-<button class="btn">功能还没做</button>
+<div class="barrel"></div>
+
 <script type=text/javascript>
-    function Barrel(imgNum, baseHeight, $ct) {
-        this.$ct = $ct;
-        //this.imgNum = imgNum;
+    function Barrel(ct, baseHeight, num) {
+        this.ct = document.querySelector(ct);
         this.baseHeight = baseHeight;
         this.rowList = [];
-        this.imgLoad(imgNum);
+        this.imgLoad(num);
     }
 
     Barrel.prototype = {
-        getImgUrl: function (num) {
-            let urls = [];
+        //获取图片地址
+        getImgUrls: function (num) {
+            let imgList = [];
             for (let i = 0; i < num; i++) {
-                urls.push('https://uploadbeta.com/api/pictures/random/?key=推女郎&sort=' + parseInt(Math.random() * 1000))
+                let imgUrl = "https://uploadbeta.com/api/pictures/random/?key=%E6%80%A7%E6%84%9F&sort=" + parseInt(Math.random() * 500);
+                imgList.push(imgUrl);
             }
-            //console.log(urls)
-            return urls;
+            //console.log(imgList)
+            return imgList;
         },
 
+        //载入图片
         imgLoad: function (num) {
-            let _this = this,
-                imgUrls = this.getImgUrl(num);
-            //循环每一个url，每次循环创建一张图
-            imgUrls.forEach((imgUrl) => {
-                //console.log(imgUrl);
-                let img = new Image();
+            let _this = this;
+            let imgUrls = this.getImgUrls(num);
+            imgUrls.forEach(function (imgUrl) {
+                let img = new Image;
                 img.src = imgUrl;
-                img.onload = () => {
-                    let originWidth = img.width,
-                        originHeight = img.height,
-                        ratio = originWidth / originHeight;
-                    //console.log($(img))
+                //console.log(img)
+                img.onload = function () {
+                    let originImgWidth = img.width,
+                        originImgHeight = img.height;
+                    //console.log(originImgWidth,originImgHeight)
                     let imgInfo = {
-                        target: $(img),
-                        width: _this.baseHeight * ratio,
-                        height: _this.baseHeight,
-                        ratio: ratio
+                        target: img,
+                        imgWidth: originImgWidth / originImgHeight * _this.baseHeight,
+                        imgHeight: _this.baseHeight
                     }
-                    _this.render(imgInfo)
+                    _this.render(imgInfo);
                 }
             })
         },
 
+        //渲染成功载入的图片
         render: function (imgInfo) {
+            //console.log(imgInfo.target)
             let _this = this;
-            let rowList = this.rowList,
-                rowWidth = 0,
+            let rowWidth = 0,
                 rowHeight = 0,
-                clientWidth = this.$ct.width(),
-                lastImgInfo = imgInfo;
+                clientWidth = this.ct.clientWidth;
+            let lastImgInfo = imgInfo;
             this.rowList.push(imgInfo);
-            //console.log(this.rowList)
-            rowList.forEach((e) => {
-                //console.log(e)
-                rowWidth += e.width;
-                //console.log(rowWidth)
+            this.rowList.forEach(function (e) {
+                rowWidth += e.imgWidth;
                 if (rowWidth > clientWidth) {
-                    rowList.pop();
-                    rowWidth = rowWidth - lastImgInfo.width;
-                    rowHeight = clientWidth * _this.baseHeight / rowWidth;
-
+                    _this.rowList.pop();
+                    rowWidth -= lastImgInfo.imgWidth;
+                    rowHeight = _this.baseHeight / rowWidth* clientWidth;
+                    //console.log(rowHeight,rowWidth)
                     _this.createRow(rowHeight);
                     _this.rowList = [];
-                    _this.rowList.push(lastImgInfo);
+                    _this.rowList.push(lastImgInfo)
                 }
             })
         },
 
+
+        //创建DOM元素展示图片
         createRow: function (rowHeight) {
-            let $rowCt = $('<div class="img-row"></div>');
-            this.rowList.forEach((imgInfo) => {
-                let $imgCt = $('<div class="row-box"></div>'),
-                    $img = imgInfo.target;
-                $img.height(rowHeight);
-                $imgCt.append($img);
-                $rowCt.append($imgCt);
+            let imgRow = document.createElement("div");
+            imgRow.classList.add("img-row");
+            this.rowList.forEach(function (imgInfo) {
+                imgInfo.target.style.height = rowHeight+"px";
+                let imgBox = document.createElement("div");
+                imgBox.classList.add("img-box");
+                imgBox.appendChild(imgInfo.target);
+                imgRow.appendChild(imgBox);
             })
-            //console.log(this.$ct)
-            this.$ct.append($rowCt);
-        },
+            this.ct.appendChild(imgRow);
+        }
     }
 
-    let test = new Barrel(50, 300, $(".img-preview"))
-
-    $(".btn").on("click", function () {
-        new Barrel(20, 300, $(".img-preview"))
-    })
+    let barrel1 = new Barrel(".barrel",300,50);
 </script>
 </body>
 </html>
