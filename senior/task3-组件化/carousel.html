@@ -125,21 +125,56 @@
     <span class="pre">PRE</span>
     <span class="next">NEXT</span>
 </div>
+<div class="ct carousel2">
+    <ul class="carousel">
+        <li class="show">
+            <a href="javascript:;">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span class="pre">PRE</span>
+    <span class="next">NEXT</span>
+</div>
 <script type=text/javascript>
 
     function Carousel(curCarousel) {
         this.ct = document.querySelector(curCarousel);
-        this.carousel = document.querySelector(".carousel");
-        this.allImg = this.getChildren(this.carousel, "li");
-        this.bullets = $(this.ct).find(".bullet > li");
-        this.imgLen = this.allImg.length;
-        this.imgIndex = 0;
-        this.isAnimate = false;
-        //绑定执行
-        this.bind();
+        this.init();
     }
 
     Carousel.prototype = {
+        init: function () {
+            this.carousel = $(this.ct).find(".carousel")[0];
+            this.allImg = this.getChildren(this.carousel, "li");
+            this.bullets = $(this.ct).find(".bullet > li");
+            this.imgLen = this.allImg.length;
+            this.imgIndex = 0;
+            this.isAnimate = false;
+            //绑定执行
+            this.bind();
+        },
 
         getChildren: function (parent, ele) {
             let children = parent.childNodes,
@@ -240,7 +275,7 @@
 
     let carousel1 = new Carousel(".carousel1");
 
-    //    let carousel2 = new Carousel(".carousel1")[1];
+    let carousel2 = new Carousel(".carousel2");
 </script>
 </body>
 </html>
