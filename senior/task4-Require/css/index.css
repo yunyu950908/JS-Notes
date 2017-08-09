@@ -37,6 +37,7 @@ li {
     visibility: hidden;
     clear: both;
 }
+
 .main .ss {
     padding: 150px 0;
     text-align: center;
@@ -84,7 +85,6 @@ li {
     background: #fed136;
 }
 
-
 /*导航栏开始*/
 .header .n-c {
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
@@ -92,7 +92,7 @@ li {
     height: 50px;
     padding: 10px 0;
     margin-bottom: 20px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     z-index: 9999;
@@ -156,6 +156,8 @@ header .n-c ul li a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
+    cursor: default;
 }
 
 .banner .b-title .sub-t {
@@ -512,10 +514,15 @@ header .n-c ul li a:hover {
     right: -10px;
 }
 
-.footer .f-right a:hover{
+.footer .f-right a:hover {
     text-decoration: underline;
 }
 
+/*news模块*/
+.news {
+    background: rgba(75, 75, 75, .1);
+    padding: 20px 0;
+}
 
 
 

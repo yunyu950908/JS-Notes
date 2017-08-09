@@ -1,9 +1,39 @@
-
-define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel"], function ($, Exposure, Carousel, Tab, fullScreenCarousel) {
+define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall", "GetNews"], function ($, Exposure, Carousel, Tab, fullScreenCarousel, WaterFall, GetNews) {
     let test = $(".test")
     console.log(test)
-    fullScreenCarousel.init($(".banner .carousel > li "),"../json/bannerList.txt?_")
+    let newsChLen = $(".newsCt").length,
+        baseLen = 10;
 
+    console.log(newsChLen)
+
+    fullScreenCarousel.init($(".banner .carousel > li "), "../json/bannerList.txt?_")
+    GetNews.init($(".newsTemp"), $(".newsBtn"))
+
+    check(baseLen);
+
+    function check(num) {
+        var sum = num;
+        clearTimeout(timeID1)
+        clearTimeout(timeID2)
+        if (newsChLen == sum) {
+            var timeID1 = setTimeout(function () {
+                WaterFall.init($(".newsTemp"), $(".newsCt"));
+                sum += 10;
+                baseLen += 10;
+            }, 50)
+        } else {
+            var timeID2 = setTimeout(function () {
+                newsChLen = $(".newsCt").length
+                console.log(newsChLen)
+                check(sum)
+            }, 50)
+        }
+    }
+
+
+    $(".newsBtn").on("click", function () {
+        check(baseLen);
+    })
 })
 
 

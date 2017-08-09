@@ -2,146 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>木桶流</title>
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Title</title>
     <style type=text/css>
         * {
             margin: 0;
             padding: 0;
         }
 
-        .img-preview {
-            width: 1000px;
-            margin: 0 auto;
+        .ct {
+            position: relative;
         }
 
-        .img-row {
-            margin-bottom: 8px;
+        .p-w {
+            position: absolute;
+            width: 180px;
+            margin-top: 10px;
+            margin-left: 10px;
+            transition: all 1s;
         }
 
-        .img-row:after {
-            content: "";
-            display: block;
-            clear: both;
+        .b1 {
+            height: 300px;
+            background: #00b88d;
         }
 
-        .row-box {
-            float: left;
+        .b2 {
+            height: 250px;
+            background: #fec12c;
         }
 
-        .img-line .row-box:first-child {
-            padding-left: 0;
+        .b3 {
+            height: 200px;
+            background: #2196F3;
         }
 
-        .btn {
-            width: 6rem;
-            height: 2rem;
-            outline: none;
-            border: 1px solid lightseagreen;
-            border-radius: .5rem;
-            background: transparent;
-            color: lightseagreen;
-            display: block;
-            margin: 5rem auto;
-            cursor: pointer;
-            transition: all .5s ease;
+        .b4 {
+            height: 150px;
+            background: #E27272;
         }
 
-        .btn:hover {
-            background: lightblue;
-        }
     </style>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
 </head>
 <body>
-<div class="img-preview"></div>
-<button class="btn">功能还没做</button>
-<script type=text/javascript>
-    function Barrel(imgNum, baseHeight, $ct) {
-        this.$ct = $ct;
-        //this.imgNum = imgNum;
-        this.baseHeight = baseHeight;
-        this.rowList = [];
-        this.imgLoad(imgNum);
-    }
-
-    Barrel.prototype = {
-        getImgUrl: function (num) {
-            let urls = [];
-            for (let i = 0; i < num; i++) {
-                urls.push('https://uploadbeta.com/api/pictures/random/?key=推女郎&sort=' + parseInt(Math.random() * 1000))
-            }
-            //console.log(urls)
-            return urls;
-        },
-
-        imgLoad: function (num) {
-            let _this = this,
-                imgUrls = this.getImgUrl(num);
-            //循环每一个url，每次循环创建一张图
-            imgUrls.forEach((imgUrl) => {
-                //console.log(imgUrl);
-                let img = new Image();
-                img.src = imgUrl;
-                img.onload = () => {
-                    let originWidth = img.width,
-                        originHeight = img.height,
-                        ratio = originWidth / originHeight;
-                    //console.log($(img))
-                    let imgInfo = {
-                        target: $(img),
-                        width: _this.baseHeight * ratio,
-                        height: _this.baseHeight,
-                        ratio: ratio
-                    }
-                    _this.render(imgInfo)
-                }
-            })
-        },
-
-        render: function (imgInfo) {
-            let _this = this;
-            let rowList = this.rowList,
-                rowWidth = 0,
-                rowHeight = 0,
-                clientWidth = this.$ct.width(),
-                lastImgInfo = imgInfo;
-            this.rowList.push(imgInfo);
-            //console.log(this.rowList)
-            rowList.forEach((e) => {
-                //console.log(e)
-                rowWidth += e.width;
-                //console.log(rowWidth)
-                if (rowWidth > clientWidth) {
-                    rowList.pop();
-                    rowWidth = rowWidth - lastImgInfo.width;
-                    rowHeight = clientWidth * _this.baseHeight / rowWidth;
-
-                    _this.createRow(rowHeight);
-                    _this.rowList = [];
-                    _this.rowList.push(lastImgInfo);
-                }
-            })
-        },
-
-        createRow: function (rowHeight) {
-            let $rowCt = $('<div class="img-row"></div>');
-            this.rowList.forEach((imgInfo) => {
-                let $imgCt = $('<div class="row-box"></div>'),
-                    $img = imgInfo.target;
-                $img.height(rowHeight);
-                $imgCt.append($img);
-                $rowCt.append($imgCt);
-            })
-            //console.log(this.$ct)
-            this.$ct.append($rowCt);
-        },
-    }
-
-    let test = new Barrel(50, 300, $(".img-preview"))
-
-    $(".btn").on("click", function () {
-        new Barrel(20, 300, $(".img-preview"))
-    })
-</script>
+<div class="ct">
+    <div class="p-w b1">No.1</div>
+    <div class="p-w b3">No.2</div>
+    <div class="p-w b3">No.3</div>
+    <div class="p-w b2">No.4</div>
+    <div class="p-w b4">No.5</div>
+    <div class="p-w b2">No.6</div>
+    <div class="p-w b4">No.7</div>
+    <div class="p-w b1">No.8</div>
+    <div class="p-w b1">No.9</div>
+    <div class="p-w b3">No.10</div>
+    <div class="p-w b4">No.11</div>
+    <div class="p-w b3">No.12</div>
+    <div class="p-w b2">No.13</div>
+    <div class="p-w b3">No.14</div>
+    <div class="p-w b4">No.15</div>
+</div>
 </body>
+<script type=text/javascript>
+
+    function WaterFall($outerCt, $innerCt) {
+        this.$outerCt = $outerCt;
+        this.$innerCt = $innerCt;
+    }
+
+    WaterFall.prototype = {
+        init: function () {
+            this.waterfallLayout();
+            this.resizeLayout();
+        },
+
+        resizeLayout: function () {
+            let _this = this;
+            $(window).resize(function () {
+                _this.layout();
+            })
+        },
+
+        waterfallLayout: function () {
+            //获取一行能放多少列
+            let colLength = parseInt(this.$outerCt.width() / this.$innerCt.width(true));
+            //初始化每列的高
+            let arr = [];
+            for (let i = 0; i < colLength; i++) {
+                arr[i] = 0;
+            }
+
+            //遍历每一项innerCt,找到最短的，然后定位当前项
+            this.$innerCt.each(function (i, e) {
+                //获取最短的那一列的高和索引
+                let minHeight = Math.min.apply(null, arr),
+                    minIndex = arr.indexOf(minHeight);
+                //绝对定位至最短的那个位置下面
+                $(e).css({
+                    top: arr[minIndex],
+                    left: $(e).outerWidth(true) * minIndex
+                })
+                //修改该次改变的列长
+                arr[minIndex] += $(e).outerHeight(true)
+
+            })
+        }
+    }
+
+
+    var waterFall = (function () {
+        //定义init()
+        function init() {
+            waterFall()
+            $(window).resize(function () {
+                waterFall()
+            })
+        }
+
+        //定义waterFall
+        function waterFall($ct, $child) {
+            //获取一行能排多少列
+            var colLength = parseInt($ct).width() / $child.outerWidth(true)
+            //初始化一个数组，长度为列数
+            var arr = []
+            for (var i = 0; i < colLength; i++) {
+                arr[i] = 0
+            }
+
+            //获取最短的那一列以及它的索引
+            $child.each(function (i, e) {
+                var minVal = Math.min.apply(null, arr)
+                var minIndex = arr.indexOf(minVal)
+                //定位每一个元素到最短的那一列去
+                $(e).css({
+                    top: arr[minIndex],
+                    left: $(e).outerWidth(true) * minIndex
+                })
+                //修改数组中存储的每列长
+                arr[minIndex] += $(e).outerHeight(true)
+            })
+        }
+
+        return {
+            init: init
+        }
+    })()
+
+    //启动init()
+    waterFall.init()
+</script>
 </html>

@@ -1,7 +1,25 @@
+/*没有后端获取JSON数据直接设置banner图*/
+.banner .carousel > li:nth-child(1) {
+    background: url("http://d.5857.com/ecymt_161128/001.jpg");
+}
 
+.banner .carousel > li:nth-child(2) {
+    background: url("http://d.5857.com/ecymt_161128/002.jpg");
+}
+
+.banner .carousel > li:nth-child(3) {
+    background: url("http://d.5857.com/ecymt_161128/003.jpg");
+}
+
+.banner .carousel > li:nth-child(4) {
+    background: url("http://d.5857.com/ecymt_161128/004.jpg");
+}
+
+/*没有后端获取JSON数据直接设置banner图*/
 .banner > .pre, .banner > .next {
     display: block;
     position: absolute;
+    z-index: 999;
     margin: 0 1rem;
     padding: 1rem .5rem;
     top: 50%;

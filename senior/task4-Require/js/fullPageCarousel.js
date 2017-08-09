@@ -43,6 +43,7 @@ define(["jquery"], function ($) {
                         })
                     })
                     .fail(function () {
+                        _this.setSize()
                         console.log("请求失败")
                     })
             },
@@ -148,7 +149,7 @@ define(["jquery"], function ($) {
                         _this.imgIndex = -1;
                     }
                     _this.imgIndex += num;
-                    console.log(_this.imgIndex)
+                    //console.log(_this.imgIndex)
                     _this.setBullet();
                     _this.isAnimate = false;
                 })
