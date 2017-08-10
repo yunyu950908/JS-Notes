@@ -1,17 +1,17 @@
 /*没有后端获取JSON数据直接设置banner图*/
-.banner .carousel > li:nth-child(1) {
+.banner .carousel > li.banner1 {
     background: url("http://d.5857.com/ecymt_161128/001.jpg");
 }
 
-.banner .carousel > li:nth-child(2) {
+.banner .carousel > li.banner2 {
     background: url("http://d.5857.com/ecymt_161128/002.jpg");
 }
 
-.banner .carousel > li:nth-child(3) {
+.banner .carousel > li.banner3 {
     background: url("http://d.5857.com/ecymt_161128/003.jpg");
 }
 
-.banner .carousel > li:nth-child(4) {
+.banner .carousel > li.banner4 {
     background: url("http://d.5857.com/ecymt_161128/004.jpg");
 }
 
