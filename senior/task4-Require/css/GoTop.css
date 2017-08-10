@@ -1,0 +1,21 @@
+.gotop {
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
+    color: rgba(255, 255, 255, .8);
+    border-radius: 50%;
+    background: rgba(32, 178, 170, .8);
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    z-index: 998;
+    cursor: pointer;
+    transition: all ease .3s;
+    display: none;
+}
+
+.gotop:hover {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(32, 178, 170, 1);
+}

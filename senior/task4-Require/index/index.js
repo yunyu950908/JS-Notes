@@ -1,16 +1,17 @@
-define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall", "GetNews"], function ($, Exposure, Carousel, Tab, fullScreenCarousel, WaterFall, GetNews) {
-    let test = $(".test")
-    console.log(test)
-    let newsChLen = $(".newsCt").length,
-        baseLen = 10;
+define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall", "GetNews","GoTop"], function ($, Exposure, Carousel, Tab, fullScreenCarousel, WaterFall, GetNews,GoTop) {
+    // let test = $(".test")
+    // console.log(test)
 
-    console.log(newsChLen)
-
+    //全屏轮播
     fullScreenCarousel.init($(".banner .carousel > li "), "../json/bannerList.txt?_")
+
+    //获取新闻
     GetNews.init($(".newsTemp"), $(".newsBtn"))
 
+    //新闻内容添加到DOM树后渲染
+    let newsChLen = $(".newsCt").length,
+        baseLen = 10;
     check(baseLen);
-
     function check(num) {
         var sum = num;
         clearTimeout(timeID1)
@@ -30,10 +31,14 @@ define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall"
         }
     }
 
-
     $(".newsBtn").on("click", function () {
         check(baseLen);
     })
+
+    //回到顶部
+    GoTop.init($(".gotop"))
+
+
 })
 
 
