@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: "../js",
     paths: {
-        "jquery": "../../../jquery"
+        "jquery": "./jquery.min"
     },
     // shim: {
     //
@@ -15,4 +15,4 @@ requirejs.config({
     // }
 })
 
-requirejs(["../index/index"])
+requirejs(["../js/index"])

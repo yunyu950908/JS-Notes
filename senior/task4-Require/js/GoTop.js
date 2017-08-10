@@ -14,7 +14,7 @@ define(["jquery"], function ($) {
             },
 
             onScroll: function () {
-                let _this = this;
+                var _this = this;
                 $(window).on("scroll", function () {
                     _this.check();
                 })
@@ -27,7 +27,7 @@ define(["jquery"], function ($) {
                 }
             },
             bind: function () {
-                let _this = this;
+                var _this = this;
                 this.$btn.on("click", function () {
                     $("html,body").animate({scrollTop: '0px'}, function () {
                         _this.$btn.css("display", "none");

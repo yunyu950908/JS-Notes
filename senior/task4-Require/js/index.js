@@ -1,4 +1,4 @@
-define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall", "GetNews","GoTop"], function ($, Exposure, Carousel, Tab, fullScreenCarousel, WaterFall, GetNews,GoTop) {
+define(["jquery", "fullPageCarousel", "WaterFall", "GetNews", "GoTop"], function ($, fullScreenCarousel, WaterFall, GetNews, GoTop) {
     // let test = $(".test")
     // console.log(test)
 
@@ -9,9 +9,10 @@ define(["jquery", "Exposure", "Carousel", "Tab", "fullPageCarousel", "WaterFall"
     GetNews.init($(".newsTemp"), $(".newsBtn"))
 
     //新闻内容添加到DOM树后渲染
-    let newsChLen = $(".newsCt").length,
+    var newsChLen = $(".newsCt").length,
         baseLen = 10;
     check(baseLen);
+
     function check(num) {
         var sum = num;
         clearTimeout(timeID1)

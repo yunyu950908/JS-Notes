@@ -23,7 +23,7 @@ define(["jquery"], function ($) {
         fullScreenCarousel.prototype = {
 
             init: function () {
-                let _this = this;
+                var _this = this;
                 this.setBannerUrls(_this.jsonUrl)
                 this.setCss();
                 this.setSize();
@@ -33,10 +33,10 @@ define(["jquery"], function ($) {
 
             //1、获取轮播图的Url并设置
             setBannerUrls: function (jsonUrl) {
-                let _this = this;
+                var _this = this;
                 $.get(jsonUrl + Math.random())
                     .done(function (json) {
-                        let jsonFormat = JSON.parse(json);
+                        var jsonFormat = JSON.parse(json);
                         _this.$bannerLis.each(function (i, e) {
                             $(e).css("background-image", "url('" + jsonFormat[i] + "')")
                             _this.setSize()
@@ -66,7 +66,7 @@ define(["jquery"], function ($) {
 
             //4、设置全屏轮播的尺寸
             setSize: function () {
-                let bannerHeight = $(window).height(),
+                var bannerHeight = $(window).height(),
                     bannerWidth = $(window).width();
                 //设置步长
                 this.stepLength = bannerWidth;
@@ -82,7 +82,7 @@ define(["jquery"], function ($) {
 
             //窗口大小改变的时候重新设置轮播图大小
             resize: function () {
-                let _this = this;
+                var _this = this;
                 $(window).resize(function () {
                     _this.setSize();
                 })
@@ -97,7 +97,7 @@ define(["jquery"], function ($) {
             },
 
             playBullet: function () {
-                let _this = this;
+                var _this = this;
                 this.$bullets.each(function (i, j) {
                     $(j).on("click", function () {
                         if (i > _this.imgIndex) {
@@ -112,10 +112,10 @@ define(["jquery"], function ($) {
 
             //上一张轮播
             playPre: function (num) {
-                let _this = this;
+                var _this = this;
                 if (this.isAnimate == true) return;
                 this.isAnimate = true;
-                for (let i = 0; i < num; i++) {
+                for (var i = 0; i < num; i++) {
                     this.$parent.prepend(_this.$parent.children().last())
                 }
                 this.$parent.css("left", -this.stepLength)
@@ -135,13 +135,13 @@ define(["jquery"], function ($) {
 
             //下一张轮播
             playNext: function (num) {
-                let _this = this;
+                var _this = this;
                 if (this.isAnimate == true) return;
                 this.isAnimate = true;
                 $(this.$parent).animate({
                     left: "-=" + _this.stepLength * num
                 }, function () {
-                    for (let i = 0; i < num; i++) {
+                    for (var i = 0; i < num; i++) {
                         _this.$parent.append(_this.$parent.children().first())
                     }
                     _this.$parent.css("left", "0")
@@ -157,7 +157,7 @@ define(["jquery"], function ($) {
 
             //自动播放
             autoPlay: function () {
-                let _this = this;
+                var _this = this;
                 this.timeId = setInterval(function () {
                     _this.playNext(1);
                 }, 3000)
@@ -165,7 +165,7 @@ define(["jquery"], function ($) {
 
             //绑定事件
             bind: function () {
-                let _this = this;
+                var _this = this;
                 this.$parent.parent().find(".next").on("click", function () {
                     _this.playNext(1);
                 })

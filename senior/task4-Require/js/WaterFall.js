@@ -18,7 +18,7 @@ define(["jquery"], function ($) {
             },
 
             setOuterWidth: function () {
-                let ctWidth = $(window).width();
+                var ctWidth = $(window).width();
                 this.$outerCt.width(ctWidth);
             },
             setOuterHeight: function () {
@@ -26,7 +26,7 @@ define(["jquery"], function ($) {
             },
 
             resizeLayout: function () {
-                let _this = this;
+                var _this = this;
                 $(window).resize(function () {
                     _this.setOuterWidth();
                     _this.waterfallLayout();
@@ -35,21 +35,21 @@ define(["jquery"], function ($) {
             },
 
             waterfallLayout: function () {
-                let _this = this;
+                var _this = this;
                 //获取一行能放多少列
-                let colLength = parseInt(this.$outerCt.width() / this.$innerCt.outerWidth(true))
+                var colLength = parseInt(this.$outerCt.width() / this.$innerCt.outerWidth(true))
                 console.log(colLength)
 
                 //初始化每列的高
-                let arr = [];
-                for (let i = 0; i < colLength; i++) {
+                var arr = [];
+                for (var i = 0; i < colLength; i++) {
                     arr[i] = 0;
                 }
 
                 //遍历每一项innerCt,找到最短的，然后定位当前项
                 this.$innerCt.each(function (i, e) {
                     //获取最短的那一列的高和索引
-                    let minHeight = Math.min.apply(null, arr),
+                    var minHeight = Math.min.apply(null, arr),
                         minIndex = arr.indexOf(minHeight);
                     //绝对定位至最短的那个位置下面
                     $(e).css({

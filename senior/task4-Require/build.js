@@ -1,7 +1,7 @@
 ({
     baseUrl: "./js",
     paths: {
-        "jquery": "../../../jquery"
+        "jquery": "jquery.min"
     },
     name: "../requirejs/main",
     out: "dist/index.min.js"

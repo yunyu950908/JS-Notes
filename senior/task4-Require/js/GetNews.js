@@ -24,7 +24,7 @@ define(["jquery"], function ($) {
             },
 
             bind: function () {
-                let _this = this;
+                var _this = this;
                 this.$newsBtn.on("click", function () {
                     if (_this.newsList.length < 10) {
                         _this.page++;
@@ -42,7 +42,7 @@ define(["jquery"], function ($) {
                     return n < 10 ? '0' + n : n
                 }
 
-                let date = new Date();
+                var date = new Date();
                 this.time = date.getFullYear().toString()
                     + setZero(date.getMonth() + 1)
                     + setZero(date.getDate())
@@ -54,13 +54,13 @@ define(["jquery"], function ($) {
 
             //ajax获取新闻数据
             getNews: function () {
-                let _this = this;
+                var _this = this;
                 //设置status
                 this.status = 0;
                 //获取时间YYYYMMDDHHMMSS
                 this.generateTimeReqestNumber();
                 //ajax获取新闻数据
-                let newsAPI = "http://route.showapi.com/198-1?" +
+                var newsAPI = "http://route.showapi.com/198-1?" +
                     "showapi_appid=43629&" +
                     "showapi_sign=b643847244b14f1d9058090a18b695ed&" +
                     "showapi_timestamp=" + _this.time +
@@ -69,7 +69,7 @@ define(["jquery"], function ($) {
                 $.get(newsAPI)
                     .done(function (json) {
                         //console.log(json)
-                        //let jsonFormat = JSON.parse(json);
+                        //var jsonFormat = JSON.parse(json);
                         _this.newsList = json.showapi_res_body.newslist;
                         _this.saveNews();
                         _this.setNews();
@@ -82,8 +82,8 @@ define(["jquery"], function ($) {
 
             //获取的json数据分类存储
             saveNews: function () {
-                let _this = this;
-                for (let i = 0; i < 10; i++) {
+                var _this = this;
+                for (var i = 0; i < 10; i++) {
                     this.title.push(_this.newsList[i].title);
                     this.picUrl.push(_this.newsList[i].picUrl);
                     this.ctime.push(_this.newsList[i].ctime);
@@ -99,15 +99,15 @@ define(["jquery"], function ($) {
 
             //创建元素放入新闻数据
             setNews: function () {
-                let _this = this;
-                for (let i = 0; i < 10; i++) {
+                var _this = this;
+                for (var i = 0; i < 10; i++) {
                     //创建设置外层容器与跳转容器
-                    let $newsCt = $("<div class='newsCt'></div>");
-                    let $newsUrl = $("<a class='newsUrl'></a>");
+                    var $newsCt = $("<div class='newsCt'></div>");
+                    var $newsUrl = $("<a class='newsUrl'></a>");
                     $newsUrl.attr("href", _this.url[i])
                     //创建设置预览图片
-                    let $newsPic = $("<div class='newsPic'></div>");
-                    let $img = $("<img src=''>");
+                    var $newsPic = $("<div class='newsPic'></div>");
+                    var $img = $("<img src=''>");
                     $img.attr("src", _this.picUrl[i]);
                     $newsPic.append($img)
                     //创建设置新闻描述
