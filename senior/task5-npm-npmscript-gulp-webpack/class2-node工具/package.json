@@ -1,0 +1,17 @@
+{
+  "name": "hungerdemo0814",
+  "version": "0.0.1",
+  "description": "just test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liyu",
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^0.3.6"
+  },
+  "devDependencies": {
+    "easytpl": "^1.0.4"
+  }
+}
