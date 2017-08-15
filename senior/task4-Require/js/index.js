@@ -1,6 +1,6 @@
 define(["jquery", "fullPageCarousel", "WaterFall", "GetNews", "GoTop"], function ($, fullScreenCarousel, WaterFall, GetNews, GoTop) {
-    // let test = $(".test")
-    // console.log(test)
+    // let getWeatherTest = $(".getWeatherTest")
+    // console.log(getWeatherTest)
 
     //全屏轮播
     fullScreenCarousel.init($(".banner .carousel > li "), "../json/bannerList.txt?_")
@@ -49,7 +49,7 @@ define(["jquery", "fullPageCarousel", "WaterFall", "GetNews", "GoTop"], function
 //         Carousel = require("Carousel"),
 //         Tab = require("Tab");
 //
-//     let test = $(".test")
+//     let getWeatherTest = $(".getWeatherTest")
 //     console.log(Carousel)
 //
 // })
