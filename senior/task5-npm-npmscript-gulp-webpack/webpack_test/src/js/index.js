@@ -1,12 +1,13 @@
-// define(["jquery", "fullPageCarousel", "WaterFall", "GetNews", "GoTop"], function ($, fullScreenCarousel, WaterFall, GetNews, GoTop) {
-// let getWeatherTest = $(".getWeatherTest")
-// console.log(getWeatherTest)
-var $ = require("./jquery.min.js"),
+import "../css/fullPageBanner.css";
+import "../css/GetNews.css";
+import "../css/GoTop.css";
+import "../css/index.css";
+
+var $ = require("jquery"),
     fullScreenCarousel = require("./fullPageCarousel.js"),
     WaterFall = require("./WaterFall.js"),
     GetNews = require("./GetNews.js"),
     GoTop = require("./GoTop.js")
-console.log($,GoTop)
 
 //全屏轮播
 fullScreenCarousel.init($(".banner .carousel > li "), "../json/bannerList.txt?_")
@@ -42,17 +43,3 @@ $(".newsBtn").on("click", function () {
 //回到顶部
 GoTop.init($(".gotop"))
 
-
-// })
-
-
-// define(function (require, exports, module) {
-//     let $ = require("jquery"),
-//         Exposure = require("Exposure"),
-//         Carousel = require("Carousel"),
-//         Tab = require("Tab");
-//
-//     let getWeatherTest = $(".getWeatherTest")
-//     console.log(Carousel)
-//
-// })

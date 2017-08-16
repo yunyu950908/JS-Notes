@@ -65,17 +65,50 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__index_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index1_css__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index1_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__index1_css__);
+
+
+
+var test1 = __webpack_require__(3)
 console.log(1)
-__webpack_require__(1)
+for (var i = 0; i < 5; i++) {
+    new test1()
+}
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
+// removed by extract-text-webpack-plugin
 
-module.exports = console.log(2)
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var test = function () {
+    var box = document.createElement("div")
+    box.style.height = 100+"px"
+    box.style.width = 100+"px"
+    box.style.background = "#fff000"
+    box.style.margin = 20+"px"
+    box.style.display = "inline-block"
+    document.body.appendChild(box)
+}
+
+module.exports = test
 
 /***/ })
 /******/ ]);

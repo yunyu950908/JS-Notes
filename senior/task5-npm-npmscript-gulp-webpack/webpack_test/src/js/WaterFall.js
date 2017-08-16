@@ -1,5 +1,5 @@
 // define(["jquery"], function ($) {
-var $ = require("./jquery.min.js")
+var $ = require("jquery")
 var WaterFall = (function () {
 
     function WaterFall($outerCt, $innerCt) {
