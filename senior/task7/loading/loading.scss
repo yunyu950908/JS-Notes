@@ -1,0 +1,54 @@
+@mixin off {
+  box-shadow: 0 0 lightgreen;
+  height: 20px;
+}
+
+@mixin on {
+  box-shadow: 0 -20px lightgreen;
+  height: 30px;
+}
+
+@keyframes loading {
+  0% {
+    @include off
+  }
+  33% {
+    @include on
+  }
+  66% {
+    @include off
+  }
+  100% {
+    @include off
+  }
+}
+
+@mixin animateLoading {
+  animation: loading 1s infinite;
+  background: lightgreen;
+}
+
+.loading {
+  width: 10px;
+  margin: 60px auto;
+  position: relative;
+  @include animateLoading;
+  animation-delay: .1s;
+  &:before, &:after {
+    content: '';
+    width: 10px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    top: 0;
+    @include animateLoading;
+  }
+  &:before {
+    left: -20px;
+  }
+  &:after {
+    left: 20px;
+    animation-delay: .2s;
+  }
+}
+

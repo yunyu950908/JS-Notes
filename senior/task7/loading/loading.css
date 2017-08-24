@@ -1,0 +1,36 @@
+@keyframes loading {
+  0% {
+    box-shadow: 0 0 lightgreen;
+    height: 20px; }
+  33% {
+    box-shadow: 0 -20px lightgreen;
+    height: 30px; }
+  66% {
+    box-shadow: 0 0 lightgreen;
+    height: 20px; }
+  100% {
+    box-shadow: 0 0 lightgreen;
+    height: 20px; } }
+.loading {
+  width: 10px;
+  margin: 60px auto;
+  position: relative;
+  animation: loading 1s infinite;
+  background: lightgreen;
+  animation-delay: .1s; }
+  .loading:before, .loading:after {
+    content: '';
+    width: 10px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    top: 0;
+    animation: loading 1s infinite;
+    background: lightgreen; }
+  .loading:before {
+    left: -20px; }
+  .loading:after {
+    left: 20px;
+    animation-delay: .2s; }
+
+/*# sourceMappingURL=loading.css.map */
