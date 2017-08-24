@@ -1,0 +1,27 @@
+
+.loading {
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: 100px auto;
+  border: 20px solid rgba(0, 125, 125, 0.2);
+  border-top: 20px solid rgba(0, 137, 7, 0.4);
+  border-radius: 50%;
+  position: relative;
+  animation: circle 1s infinite linear;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  //40%{
+  //  transform: rotate(160deg);
+  //}
+  //60%{
+  //  transform: rotate(200deg)
+  //}
+  100% {
+    transform: rotate(360deg);
+  }
+}
