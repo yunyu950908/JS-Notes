@@ -2,18 +2,18 @@ var Event = (function () {
     var events = {};
 
     function on(evt, handler) {
-        events[evt] = events[evt] || [];
-        events[evt].push({
+        events.evt = events.evt || [];
+        events.evt.push({
             handler: handler
         })
     }
 
     function fire(evt, args) {
-        if (!events[evt]) {
+        if (!events.evt) {
             return;
         }
         // console.log(events[evt])
-        events[evt].forEach(function (e) {
+        events.evt.forEach(function (e) {
             e.handler(args);
         })
     }
