@@ -11,7 +11,7 @@
         }
 
         .img-preview {
-            width: 1000px;
+            width: 1200px;
             margin: 0 auto;
         }
 
@@ -27,6 +27,8 @@
 
         .row-box {
             float: left;
+            /*padding-top:20px;*/
+            /*padding-left: 20px;*/
         }
 
         .img-line .row-box:first-child {
@@ -54,7 +56,7 @@
 </head>
 <body>
 <div class="img-preview"></div>
-<button class="btn">功能还没做</button>
+<button class="btn">点击加载更多</button>
 <script type=text/javascript>
     function Barrel(imgNum, baseHeight, $ct) {
         this.$ct = $ct;
@@ -137,10 +139,10 @@
         },
     }
 
-    let test = new Barrel(50, 300, $(".img-preview"))
+    let test = new Barrel(20, 350, $(".img-preview"))
 
     $(".btn").on("click", function () {
-        new Barrel(20, 300, $(".img-preview"))
+        new Barrel(20, 350, $(".img-preview"))
     })
 </script>
 </body>
